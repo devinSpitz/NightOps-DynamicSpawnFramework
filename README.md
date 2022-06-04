@@ -6,6 +6,8 @@ Preview Video:
 
 https://stream.spitz.onl/play/38
 
+This framework can be used by everyone and in every mission to spawn AI, Vehicles, Objects, Triggers, and all sorts of prefabs dynamically via trigger or remote execution. Have fun making your missions!
+
  - It does spawn and despawns on player contact just with hierarchy no naming
  - It does add the waypoint automatically to the ai without naming them as in the example shown and only how in the example shown :D
  - It does recreate the navmesh for all created env if wanted
