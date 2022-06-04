@@ -15,27 +15,34 @@ This framework can be used by everyone and in every mission to spawn AI, Vehicle
  - It does respawn Ai after dying if wanted
  - It does spawn Vehicles and Environment
  - It can be called outside of the trigger function by script by simple calling Spawn() or Despawn()
- - It does support 4 types of Waypoints: Patrol, Cycle, GetInNearest, Defend, Move
+ - It does support 5 types of Waypoints: Patrol, Cycle, GetInNearest, Defend, Move
  - It does support dynamic multi spawn by the count of players so you can adapt to how many players are there
 
 
 Eniroment Spawn Options  
-![image](https://user-images.githubusercontent.com/69326203/172024630-552f385d-93fb-47ff-8a88-0b69dbe799a3.png)
+![image](./Art/172024630-552f385d-93fb-47ff-8a88-0b69dbe799a3.png?raw=true)
 
 Ai Spawn Options  
-![image](https://user-images.githubusercontent.com/69326203/172024757-31f2a636-f181-46c3-8432-7a01d6dbd980.png)
+![image](./Art/172024757-31f2a636-f181-46c3-8432-7a01d6dbd980.png?raw=true)
 
 Ai prefabs  
-![image](https://user-images.githubusercontent.com/69326203/172024648-5f37f46e-647d-4326-a623-63e10e5be250.png)
+![image](./Art/172024648-5f37f46e-647d-4326-a623-63e10e5be250.png?raw=true)
 
 Trigger options  
-![image](https://user-images.githubusercontent.com/69326203/172024696-587c4b99-aa31-4c3d-9f19-e6493bd4473e.png)
+![image](./Art/172024696-587c4b99-aa31-4c3d-9f19-e6493bd4473e.png?raw=true)
+
+How To Preview
+===
+
+![image](./Art/FirstStepPreview.png?raw=true)
+
+![image](./Art/SecondStepPreview.png?raw=true)
 
 Spawn by Code example
 ===
 
 Trigger Options:  
-![image](https://user-images.githubusercontent.com/69326203/172024798-924e851e-cb79-47dc-a8ff-78aa4244efbb.png)
+![image](./Art/172024798-924e851e-cb79-47dc-a8ff-78aa4244efbb.png?raw=true)
 
 Code:  
 ```C#
