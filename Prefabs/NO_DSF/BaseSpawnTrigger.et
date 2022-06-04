@@ -12,6 +12,7 @@ NO_SCR_SpawnTrigger {
  DrawShape 0
  TriggerActivationType "All changes"
  PeriodicQueries 1
- m_bDelete 0
- updateNavmesh 1
+ ClassFilter "ChimeraCharacter"
+ m_bDelete 1
+ updateNavmesh 0
 }

@@ -1,8 +1,6 @@
-$grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/NO_SCR_SpawnTrigger.et" {
+$grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et" {
  {
   coords 10288.313 1.29 1482.209
-  DrawShape 1
-  m_bDelete 1
   {
    GenericEntity : "{1F6605BF2EBE43B8}Prefabs/NO_DSF/Groups/SpawnAiDefend.et" {
     coords -30.898 -0.612 10.299
@@ -53,7 +51,8 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/NO_SCR_SpawnTrigger
  }
  {
   coords 10288.74 1.311 1482.203
-  updateNavmesh 0
+  TriggerActivationType None
+  PeriodicQueries 0
   {
    $grp GenericEntity : "{D8F00B5CFC8514F1}Prefabs/NO_DSF/Vehicles/SpawnVehicle.et" {
     {
