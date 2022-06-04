@@ -1,5 +1,7 @@
 NightOps-DynamicSpawnFramework
 =======
+![no_dsf](https://user-images.githubusercontent.com/69326203/172023460-7a97f450-9129-4b07-ad19-64e4b2bd4d1d.png)
+
  - It does spawn and despawns on player contact just with hierarchy no naming
  - It does add the waypoint automatically to the ai without naming them as in the example shown and only how in the example shown :D
  - It does recreate the navmesh for all created env if wanted
