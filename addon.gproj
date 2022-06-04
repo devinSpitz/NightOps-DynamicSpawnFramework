@@ -1,0 +1,8 @@
+GameProject {
+ ID "NightOpsDynamicSpawnFramework"
+ GUID "59872DC34F427384"
+ TITLE "NightOps-DynamicSpawnFramework"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}

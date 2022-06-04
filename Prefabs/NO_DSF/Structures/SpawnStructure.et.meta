@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{F7A42562EE8E24E6}Prefabs/No_DSF/Structures/SpawnStructure.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

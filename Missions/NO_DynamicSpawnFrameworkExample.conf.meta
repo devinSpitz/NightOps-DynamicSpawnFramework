@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{CF2D24706DE0543E}Missions/NO_DynamicSpawnFrameworkExample.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

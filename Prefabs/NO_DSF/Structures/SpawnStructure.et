@@ -1,0 +1,19 @@
+GenericEntity {
+ ID "598730F4B86622EE"
+ components {
+  Hierarchy "{59889B933E747B2C}" {
+  }
+  NO_SCR_EnvSpawnerComponent "{59889B968C41636F}" {
+   m_rnDefaultPrefabs {
+    CountSpawnsByOnlinePlayer "{5988C2496351ED35}" {
+     prefab {
+      "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01.et"
+     }
+    }
+   }
+  }
+  RplComponent "{59889B938B6FD883}" {
+  }
+ }
+ coords 10333.081 1.332 1482.656
+}

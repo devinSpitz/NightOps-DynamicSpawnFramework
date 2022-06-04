@@ -1,0 +1,12 @@
+GenericEntity {
+ ID "598730FA0B1BE9C5"
+ components {
+  NO_SCR_EnvSpawnerComponent "{598730FA1CED2F4D}" {
+  }
+  Hierarchy "{59889B90B0ACE366}" {
+  }
+  RplComponent "{59889B908E9CC5BC}" {
+  }
+ }
+ coords 10305.384 1.495 1480.907
+}

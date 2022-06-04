@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{760612B75AA5BCFA}Prefabs/No_DSF/Groups/SpawnAiGroupMove.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

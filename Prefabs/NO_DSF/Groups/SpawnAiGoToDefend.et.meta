@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{DAFA3AB9E07504D3}Prefabs/No_DSF/Groups/SpawnAiGoToDefend.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

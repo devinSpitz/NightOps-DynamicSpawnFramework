@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{8E854CB7405795E8}Prefabs/NO_DSF/NO_SCR_SpawnTrigger.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

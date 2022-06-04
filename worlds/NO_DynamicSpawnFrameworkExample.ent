@@ -1,0 +1,12 @@
+SubScene {
+ Parent "worlds/Eden/Eden.ent"
+}
+Layer DynamicSpawns {
+ Index 0
+}
+Layer Managers {
+ Index 1
+}
+Layer PlayerSpawns {
+ Index 2
+}

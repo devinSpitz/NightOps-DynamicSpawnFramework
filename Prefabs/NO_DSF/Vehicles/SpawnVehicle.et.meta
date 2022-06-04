@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{D8F00B5CFC8514F1}Prefabs/No_DSF/Vehicles/SpawnVehicle.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

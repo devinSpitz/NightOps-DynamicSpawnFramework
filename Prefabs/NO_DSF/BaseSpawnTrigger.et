@@ -1,0 +1,17 @@
+NO_SCR_SpawnTrigger {
+ ID "598730F6BE5563B0"
+ components {
+  Hierarchy "{59889B9093722CF6}" {
+  }
+  RplComponent "{59889B90956DA939}" {
+  }
+ }
+ coords 10305.996 1.226 1484.803
+ TriggerShapeType Sphere
+ SphereRadius 150
+ DrawShape 0
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ m_bDelete 0
+ updateNavmesh 1
+}
