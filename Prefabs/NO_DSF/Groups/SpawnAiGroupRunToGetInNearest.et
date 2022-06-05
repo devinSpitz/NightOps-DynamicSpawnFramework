@@ -1,0 +1,42 @@
+GenericEntity {
+ ID "598ABE211BA67298"
+ components {
+  Hierarchy "{59889B937332468D}" {
+  }
+  NO_SCR_AISpawnerComponent "{59889B97EDAEDA30}" {
+   m_rnDefaultPrefabs {
+    CountSpawnsByOnlinePlayer "{5988C24AFFA17339}" {
+     prefab {
+      "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et"
+     }
+    }
+   }
+  }
+  RplComponent "{59889B936A3EB786}" {
+  }
+ }
+ coords 320.837 10.001 107.726
+ angleY -4.262
+ {
+  $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+   {
+    ID "598ABE211BA6729C"
+    coords -13.822 0 7.683
+   }
+   {
+    ID "598ABE211BA6729D"
+    coords -29.6 0 20.717
+   }
+  }
+  SCR_BoardingWaypoint : "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et" {
+   ID "598ABE211BA6729B"
+   components {
+    Hierarchy "{59889B934E60AB23}" {
+    }
+    RplComponent "{59889B9390E5BF0F}" {
+    }
+   }
+   coords -55.482 -0.002 39.5
+  }
+ }
+}

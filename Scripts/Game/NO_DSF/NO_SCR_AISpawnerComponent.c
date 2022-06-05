@@ -168,9 +168,17 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 				auto tmpCycle = AIWaypointCycle.Cast(waypointEntity);
 			
 				if(!defend)
+				{
 					defend = SCR_DefendWaypoint.Cast(waypointEntity);
+					if(defend)
+						continue;
+				}
 				if(!onBoard)
+				{
 					onBoard = SCR_BoardingWaypoint.Cast(waypointEntity);
+					if(onBoard)
+						continue;
+				}
 		
 					
 				if(tmpWaypoint &&  !tmpCycle) 

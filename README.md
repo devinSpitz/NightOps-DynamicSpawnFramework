@@ -18,6 +18,7 @@ This framework can be used by everyone and in every mission to spawn AI, Vehicle
  - It does support 5 types of Waypoints: Patrol, Cycle, GetInNearest, Defend, Move
  - It does support dynamic multi spawn by the count of players so you can adapt to how many players are there
 
+The Example world is in worlds/CoopTestTerrain.ent
 
 Eniroment Spawn Options  
 ![image](./Art/172024630-552f385d-93fb-47ff-8a88-0b69dbe799a3.png?raw=true)
@@ -30,6 +31,9 @@ Ai prefabs
 
 Trigger options  
 ![image](./Art/172024696-587c4b99-aa31-4c3d-9f19-e6493bd4473e.png?raw=true)
+
+
+
 
 How To Preview
 ===
