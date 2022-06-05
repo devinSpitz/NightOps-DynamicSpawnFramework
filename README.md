@@ -17,9 +17,9 @@ This framework can be used by everyone and in every mission to spawn AI, Vehicle
  - It can be called outside of the trigger function by script by simple calling Spawn() or Despawn()
  - It does support 5 types of Waypoints: Patrol, Cycle, GetInNearest, Defend, Move
  - It does support dynamic multi spawn by the count of players so you can adapt to how many players are there
-
-The Example world is in worlds/CoopTestTerrain.ent
-
+  
+The Example world is in worlds/CoopTestTerrain.ent  
+  
 Eniroment Spawn Options  
 ![image](./Art/172024630-552f385d-93fb-47ff-8a88-0b69dbe799a3.png?raw=true)
 
