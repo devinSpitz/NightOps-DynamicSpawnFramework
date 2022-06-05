@@ -53,6 +53,7 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
   coords 10288.74 1.311 1482.203
   TriggerActivationType "First change"
   PeriodicQueries 0
+  m_bDelete 0
   {
    $grp GenericEntity : "{D8F00B5CFC8514F1}Prefabs/NO_DSF/Vehicles/SpawnVehicle.et" {
     {
