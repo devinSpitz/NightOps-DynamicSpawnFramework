@@ -82,11 +82,14 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
       m_rnDefaultPrefabs {
        CountSpawnsByOnlinePlayer "{5988C2496351ED35}" {
         CountOfPlayers 1
+        prefab {
+         "{778BD4EBF33A6BAB}Prefabs/Compositions/Misc/SubCompositions/Tent.et"
+        }
        }
        CountSpawnsByOnlinePlayer "{598900BE32815590}" {
         CountOfPlayers 2
         prefab {
-         "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01.et" "{CD370ECB385DE67A}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01.et"
+         "{778BD4EBF33A6BAB}Prefabs/Compositions/Misc/SubCompositions/Tent.et" "{778BD4EBF33A6BAB}Prefabs/Compositions/Misc/SubCompositions/Tent.et"
         }
        }
       }

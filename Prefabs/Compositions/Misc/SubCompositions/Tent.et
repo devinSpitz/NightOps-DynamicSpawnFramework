@@ -1,0 +1,1607 @@
+GenericEntity {
+ ID "598AAA8BE352A903"
+ components {
+  MeshObject "{598AAA8B8082CD23}" {
+   Object "{E4FD0E74CDB6E9BA}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Large.xob"
+   Materials {
+    MaterialAssignClass "{598AAA8B8082CEB1}" {
+     SourceMaterial "CanvasCover_Large"
+     AssignedMaterial "{220912428935BE47}Assets/Structures/Military/Camps/Canvas_Cover/Data/CanvasCover_Large_USSR.emat"
+    }
+    MaterialAssignClass "{598AAA8B8082CEBC}" {
+     SourceMaterial "Color_palette"
+     AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+    }
+    MaterialAssignClass "{598AAA8B8082CEA1}" {
+     SourceMaterial "CanvasCover_Large"
+     AssignedMaterial "{220912428935BE47}Assets/Structures/Military/Camps/Canvas_Cover/Data/CanvasCover_Large_USSR.emat"
+    }
+    MaterialAssignClass "{598AAA8B8082CEAA}" {
+     SourceMaterial "Color_palette"
+     AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+    }
+   }
+   LODFactors {
+    5 2 1.5 1 1 1
+   }
+  }
+  Hierarchy "{598AAA8B8082CD29}" {
+   Enabled 1
+  }
+  RigidBody "{598AAA8B8082CDE6}" {
+   ResponseIndex "HugeDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{598AAA8B8082CC33}" {
+   Enabled 0
+   "Additional hit zones" {
+    ScriptedHitZone Default {
+     HZDefault 1
+     "Melee multiplier" 1
+     "Kinetic multiplier" 1
+     "Explosive multiplier" 90
+     "Incendiary multiplier" 1
+    }
+   }
+   m_fBaseHealth 800
+   m_fForceToDamageScale 350
+   m_DestroySpawnObjects {
+    SCR_ParticleSpawnable "{598AAA8B8082CDB7}" {
+     m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+    }
+    SCR_DebrisSpawnable "{598AAA8B8082CD84}" {
+     m_ModelPrefabs {
+      "{841FD5F42C21DEA5}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_01.xob" "{1D016C6D31C6EF35}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_02.xob" "{6A0B04E5C5640045}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_03.xob" "{6DCCFEB4A3E2BA86}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_04.xob" "{1AC6963C574055F6}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_05.xob" "{83D82FA54AA76466}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_06.xob" "{FB5DB38F7308FE90}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_09.xob" "{071DFAE4D55E59A1}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_10.xob" "{F4D2472DBE058B16}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_07.xob" "{8C57DB0787AA11E0}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_08.xob" "{7017926C21FCB6D1}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_11.xob" "{E9092BF53C1B8741}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_12.xob" "{9E03437DC8B96831}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_13.xob" "{99C4B92CAE3FD2F2}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_14.xob" "{EECED1A45A9D3D82}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_15.xob"
+     }
+     m_eMaterialSoundType WOOD_PLANK_SMALL
+    }
+   }
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{598AAA8B8082CD8C}" {
+     m_fPhaseHealth 1500
+     m_PhaseModel "{77D0683D477A0C12}Assets/Structures/Military/Camps/Canvas_Cover/Dst/CanvasCover_Large_dst/CanvasCover_Large_dst_16.xob"
+    }
+   }
+  }
+  SCR_SlotCompositionComponent "{598AAA8B8082CC3D}" {
+   m_bOrientChildrenToTerrain 0
+  }
+  RplComponent "{598AAA8B8082CC2D}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+ Flags 1027
+ {
+  GenericEntity : "{0133284E3BDEAEC4}Prefabs/Props/Civilian/Ashtray_01_Full_yellow.et" {
+   ID "598AAA8BE352A901"
+   components {
+    Hierarchy "{598AAA88FD69DB49}" {
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+   coords 2.044 0.993 -2.98
+   angleY 0
+  }
+  $grp StaticModelEntity : "{172DD50ACF177B9E}Prefabs/Props/Military/Furniture/ChairMilitary_USSR_01.et" {
+   {
+    ID "598AAA8BE3507BFB"
+    components {
+     Hierarchy "{598AAA88FD69DB43}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 0.824 0.097 0.979
+    angleY 166.705
+   }
+   {
+    ID "598AAA8BE350E920"
+    components {
+     Hierarchy "{598AAA88FD69DB4B}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -2.735 0.097 -0.532
+    angleY 7.339
+   }
+   {
+    ID "598AAA8BE350E923"
+    components {
+     Hierarchy "{598AAA88FD69DB3E}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.631 0.097 -3.472
+    angleY -11.119
+   }
+   {
+    ID "598AAA8BE3514AF6"
+    components {
+     Hierarchy "{598AAA88FD69DB3D}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.845 0.097 -2.116
+    angleY 159.386
+   }
+   {
+    ID "598AAA8BE351C247"
+    components {
+     Hierarchy "{598AAA88FD69DB3C}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.031 0.097 -3.283
+    angleY -1.065
+   }
+   {
+    ID "598AAA8BE351DFCE"
+    components {
+     Hierarchy "{598AAA88FD69DB4A}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.574 0.097 -0.402
+    angleY 0.875
+   }
+   {
+    ID "598AAA8BE351DFCF"
+    components {
+     Hierarchy "{598AAA88FD69DB4E}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.673 0.097 0.955
+    angleY -172.661
+   }
+   {
+    ID "598AAA8BE3531F23"
+    components {
+     Hierarchy "{598AAA88FD69DB42}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.772 0.097 1.018
+    angleY 178.656
+   }
+   {
+    ID "598AAA8BE3531F24"
+    components {
+     Hierarchy "{598AAA88FD69DB30}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 0.967 0.097 -2.175
+    angleY 178.207
+   }
+   {
+    ID "598AAA8BE353288A"
+    components {
+     Hierarchy "{598AAA88FD69DB31}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.793 0.097 -3.55
+    angleY -2.84
+   }
+   {
+    ID "598AAA8BE353288B"
+    components {
+     Hierarchy "{598AAA88FD69DB45}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -1.901 0.097 0.825
+    angleY 175.812
+   }
+   {
+    ID "598AAA8BE353A50E"
+    components {
+     Hierarchy "{598AAA88FD69DB41}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.794 0.097 -0.483
+    angleY 4.126
+   }
+   {
+    ID "598AAA8BE356455D"
+    components {
+     Hierarchy "{598AAA88FD69DB3A}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.737 0.097 -2.162
+    angleY -167.226
+   }
+   {
+    ID "598AAA8BE35679F2"
+    components {
+     Hierarchy "{598AAA88FD69DB3B}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -1.118 0.097 -0.459
+    angleY 3.365
+   }
+   {
+    ID "598AAA8BE356B2A0"
+    components {
+     Hierarchy "{598AAA88FD69DB47}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -2.756 0.097 0.766
+    angleY 174.012
+   }
+   {
+    ID "598AAA8BE356CC2E"
+    components {
+     Hierarchy "{598AAA88FD69DB46}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -1.834 0.097 -0.594
+    angleY 1.3
+   }
+   {
+    ID "598AAA8BE356E4E4"
+    components {
+     Hierarchy "{598AAA88FD69DB38}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.017 0.097 -0.464
+    angleY -1.065
+   }
+   {
+    ID "598AAA8BE356E4EB"
+    components {
+     Hierarchy "{598AAA88FD69DB39}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -1.042 0.097 0.76
+    angleY -170.094
+   }
+  }
+  $grp StaticModelEntity : "{1A1020205E2B1710}Prefabs/Props/Military/Furniture/TableMilitary_USSR_01.et" {
+   {
+    ID "598AAA8BE354798A"
+    components {
+     Hierarchy "{598AAA88FD69DB32}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.536 0.094 0.318
+    angleY -2.274
+   }
+   {
+    ID "598AAA8BE3573AB8"
+    components {
+     Hierarchy "{598AAA88FD69DB34}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.078 0.094 0.263
+    angleY -4.545
+   }
+   {
+    ID "598AAA8BE3573AB9"
+    components {
+     Hierarchy "{598AAA88FD69DB36}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.08 0.094 -2.901
+    angleY 177.916
+   }
+   {
+    ID "598AAA8BE3577240"
+    components {
+     Hierarchy "{598AAA88FD69DB29}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.538 0.094 -2.847
+    angleY -2.274
+   }
+   {
+    ID "598AAA8BE357A295"
+    components {
+     Hierarchy "{598AAA88FD69DB33}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -2.666 0.094 0.102
+    angleY -3.263
+   }
+   {
+    ID "598AAA8BE357CFAD"
+    components {
+     Hierarchy "{598AAA88FD69DB35}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -1.238 0.094 0.102
+    angleY -180
+   }
+  }
+  $grp GameEntity : "{2CB0AA2A87842C18}Prefabs/Props/Civilian/LampKerosene_01/LampKerosene_01_military_USSR.et" {
+   {
+    ID "598AAA8BE354301C"
+    components {
+     Hierarchy "{598AAA88FD69DB28}" {
+     }
+    }
+    coords 1.622 0.993 -3.072
+    angleY -9.976
+   }
+   {
+    ID "598AAA8BE3547989"
+    components {
+     Hierarchy "{598AAA88FD69DB2A}" {
+     }
+    }
+    coords -0.772 0.993 0.152
+    angleY -79.036
+   }
+   {
+    ID "598AAA8BE354932C"
+    components {
+     Hierarchy "{598AAA88FD69DB2C}" {
+     }
+    }
+    coords 3.265 1.094 3.822
+    angleY -147.156
+   }
+  }
+  GenericEntity : "{339AED2BCBDF3265}Prefabs/Props/Military/Camps/PalletMRE_01_Soviet.et" {
+   ID "598AAA8BE3554B47"
+   components {
+    Hierarchy "{598AAA88FD69DB2F}" {
+     Enabled 1
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+   coords -1.98 1.054 3.541
+   angleY -145.302
+  }
+  $grp GenericEntity : "{344ABEB98BB96721}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_USSR_01_V4_covered.et" {
+   {
+    ID "598AAA8BE3554B40"
+    components {
+     Hierarchy "{598AAA88FD69DB23}" {
+     }
+     RplComponent "{5476B36C54387F41}" {
+      Enabled 1
+     }
+    }
+    coords 0.824 0.088 3.602
+    angleY 177.006
+    {
+     GenericEntity {
+      ID "56E09476DAAACB36"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Materials {
+         MaterialAssignClass "{56FC4C9A0848BBC2}" {
+          SourceMaterial "Color_Palette"
+          AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+         }
+         MaterialAssignClass "{56FC4C9A0A3A63D8}" {
+          SourceMaterial "Color_Palette"
+          AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+         }
+         MaterialAssignClass "{56FC4C9A0A3A63F3}" {
+          SourceMaterial "EquipmentBoxStack_01_cover"
+          AssignedMaterial "{D3A4EB4DC4462175}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Data/EquipmentBoxStack_01_cover_USSR.emat"
+         }
+        }
+       }
+       Hierarchy "{56B68717E713A191}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "HugeDestructible"
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+        m_DestroySpawnObjects {
+         SCR_ParticleSpawnable "{5728D7C0E8421A65}" {
+          m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+         }
+        }
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+    }
+   }
+   {
+    ID "598AAA8BE3554B46"
+    components {
+     Hierarchy "{598AAA88FD69DB21}" {
+     }
+     RplComponent "{5476B36C54387F41}" {
+      Enabled 1
+     }
+    }
+    coords -0.756 0.088 3.613
+    angleY -90
+    {
+     GenericEntity {
+      ID "56E09476DAAACB36"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Materials {
+         MaterialAssignClass "{56FC4C9A0848BBC2}" {
+          SourceMaterial "Color_Palette"
+          AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+         }
+         MaterialAssignClass "{56FC4C9A0A3A63D8}" {
+          SourceMaterial "Color_Palette"
+          AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+         }
+         MaterialAssignClass "{56FC4C9A0A3A63F3}" {
+          SourceMaterial "EquipmentBoxStack_01_cover"
+          AssignedMaterial "{D3A4EB4DC4462175}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Data/EquipmentBoxStack_01_cover_USSR.emat"
+         }
+        }
+       }
+       Hierarchy "{56B68717E713A191}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "HugeDestructible"
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+        m_DestroySpawnObjects {
+         SCR_ParticleSpawnable "{5728D7C0E8421A65}" {
+          m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+         }
+        }
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+    }
+   }
+  }
+  GenericEntity : "{34C2F623958FCACE}Prefabs/Props/Civilian/Ashtray_01_Full_clear.et" {
+   ID "598AAA8BE3553495"
+   components {
+    Hierarchy "{598AAA88FD69DB22}" {
+    }
+   }
+   coords -1.701 0.993 0.105
+   angleY 0
+  }
+  $grp GenericEntity : "{4BE795374BE3D67E}Prefabs/Props/Industrial/BarrelFuel_01_closed.et" {
+   {
+    ID "598AAA8BE34A505E"
+    components {
+     Hierarchy "{598AAA88FD69DB27}" {
+      Enabled 1
+     }
+    }
+    coords 3.277 0.1 3.816
+    angleY -29.392
+   }
+   {
+    ID "598AAA8BE3553496"
+    components {
+     Hierarchy "{598AAA88FD69DB26}" {
+      Enabled 1
+     }
+    }
+    coords -3.581 0.1 -4.003
+    angleY 52.11
+   }
+   {
+    ID "598AAA8BE355DB03"
+    components {
+     Hierarchy "{598AAA88FD69DB25}" {
+      Enabled 1
+     }
+    }
+    coords 3.306 0 4.892
+    angleY 55.86
+   }
+  }
+  GenericEntity : "{890EE5FB23BA713E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_USSR_01_V2_covered.et" {
+   ID "598AAA8BE34A505F"
+   components {
+    RplComponent "{5476B36C54387F41}" {
+     Enabled 1
+    }
+   }
+   coords -1.486 0.096 -3.494
+   angleY -93.005
+   {
+    GenericEntity {
+     ID "56B6871A4F48B395"
+     components {
+      MeshObject "{5872F0EB7FA40561}" {
+       Materials {
+        MaterialAssignClass "{56FC4C9A2A99041C}" {
+         SourceMaterial "Color_Palette"
+         AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+        }
+        MaterialAssignClass "{56FC4C9A346ECF9C}" {
+         SourceMaterial "Color_Palette"
+         AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+        }
+        MaterialAssignClass "{56FC4C9A346ECFBD}" {
+         SourceMaterial "EquipmentBoxStack_01_cover"
+         AssignedMaterial "{D3A4EB4DC4462175}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Data/EquipmentBoxStack_01_cover_USSR.emat"
+        }
+       }
+      }
+      Hierarchy "{56B68717E713A191}" {
+      }
+      RigidBody "{5872F0EB7DFB5A9D}" {
+       ResponseIndex "LargeDestructible"
+      }
+      SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       m_DestroySpawnObjects {
+        SCR_ParticleSpawnable "{5728D7C0E8421A65}" {
+         m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+    }
+   }
+  }
+  $grp GenericEntity : "{9D9312AA9984A5CE}Prefabs/Props/Garbage/Cardboard/Cardboard_Pile_08.et" {
+   {
+    ID "598AAA8BE34A50A0"
+    components {
+     Hierarchy "{598AAA88FD69DB1B}" {
+     }
+    }
+    coords 2.727 0.526 4.597
+    scale 0.5
+   }
+   {
+    ID "598AAA8BE34AC168"
+    components {
+     Hierarchy "{598AAA88FD69DB19}" {
+     }
+    }
+    coords 1.118 0.993 0.163
+    scale 0.6
+   }
+  }
+  GenericEntity : "{A0ACD52C934CFA92}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_USSR_01_V5_covered.et" {
+   ID "598AAA8BE34AC169"
+   components {
+    RplComponent "{5476B36C54387F41}" {
+     Enabled 1
+    }
+   }
+   coords -2.644 0.097 -3.511
+   angleY -3.386
+   {
+    GenericEntity {
+     ID "56E094763A91239A"
+     components {
+      MeshObject "{5872F0EB7FA40561}" {
+       Materials {
+        MaterialAssignClass "{56FC4C9A003C231B}" {
+         SourceMaterial "Color_Palette"
+         AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+        }
+        MaterialAssignClass "{56FC4C9A0324E33C}" {
+         SourceMaterial "Color_Palette"
+         AssignedMaterial "{74F9B49BD7F1D1AD}Common/Materials/ColorPalette/Color_palette_02_YELLOW_13_S3_R0.emat"
+        }
+        MaterialAssignClass "{56FC4C9A0324E354}" {
+         SourceMaterial "EquipmentBoxStack_01_cover"
+         AssignedMaterial "{D3A4EB4DC4462175}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Data/EquipmentBoxStack_01_cover_USSR.emat"
+        }
+       }
+      }
+      Hierarchy "{56B68717E713A191}" {
+      }
+      RigidBody "{5872F0EB7DFB5A9D}" {
+       ResponseIndex "HugeDestructible"
+      }
+      SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       m_DestroySpawnObjects {
+        SCR_ParticleSpawnable "{5728D7C0E8421A65}" {
+         m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+        }
+       }
+      }
+      RplComponent "{5624A88DC2D9928D}" {
+       Enabled 1
+      }
+     }
+    }
+   }
+  }
+  $grp GenericEntity : "{B898D2A1F45058F6}Prefabs/Props/Garbage/Military/Food/GarbageFoodMilitaryUSSR_01.et" {
+   {
+    ID "598AAA8BE34A89C2"
+    components {
+     Hierarchy "{598AAA88FD69DB15}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -3.028 0.993 0.094
+    angleY 125.009
+   }
+   {
+    ID "598AAA8BE34A89C3"
+    components {
+     Hierarchy "{598AAA88FD69DB13}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.725 0.51 4.439
+   }
+   {
+    ID "598AAA8BE34AB49A"
+    components {
+     Hierarchy "{598AAA88FD69DB1F}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 1.112 0.993 0.052
+   }
+   {
+    ID "598AAA8BE34AC16A"
+    components {
+     Hierarchy "{598AAA88FD69DB1D}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 0.656 0.993 -3.043
+    angleY 66.778
+   }
+   {
+    ID "598AAA8BE34B1DF0"
+    components {
+     Hierarchy "{598AAA88FD69DB11}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.529 0.51 4.621
+    angleY 109.438
+   }
+   {
+    ID "598AAA8BE34B1DF7"
+    components {
+     Hierarchy "{598AAA88FD69DB10}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -2.955 0.993 0.177
+   }
+   {
+    ID "598AAA8BE34B56D0"
+    components {
+     Hierarchy "{598AAA88FD69DB12}" {
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.725 0.51 4.67
+    angleY 177.801
+   }
+   {
+    ID "598AAA8BE34BEE20"
+    components {
+     Hierarchy "{598AAA88FD69DB1C}" {
+     }
+    }
+    coords 0.669 0.993 -2.752
+    angleY -32.722
+   }
+  }
+  $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+   {
+    ID "598AAA8BE3486994"
+    components {
+     Hierarchy "{598AAA88FD69DB08}" {
+      Enabled 1
+     }
+    }
+    coords -2.06 0 3.632
+    angleY -87.473
+   }
+   {
+    ID "598AAA8BE3486995"
+    components {
+     Hierarchy "{598AAA88FD69DB00}" {
+      Enabled 1
+     }
+    }
+    coords -2.07 0 -3.65
+    angleY -92.467
+   }
+   {
+    ID "598AAA8BE348E5AC"
+    components {
+     Hierarchy "{598AAA88FD69DB01}" {
+      Enabled 1
+     }
+    }
+    coords 1.896 0 -3.633
+    angleY -89.255
+   }
+   {
+    ID "598AAA8BE3493DFD"
+    components {
+     Hierarchy "{598AAA88FD69DB0C}" {
+      Enabled 1
+     }
+    }
+    coords -1.964 0 -0.612
+    angleY -92.85
+   }
+   {
+    ID "598AAA8BE3493DFE"
+    components {
+     Hierarchy "{598AAA88FD69DB0F}" {
+      Enabled 1
+     }
+    }
+    coords 1.789 0 -2.293
+    angleY -91.365
+   }
+   {
+    ID "598AAA8BE34959B2"
+    components {
+     Hierarchy "{598AAA88FD69DB0E}" {
+      Enabled 1
+     }
+    }
+    coords -2.122 0 -2.204
+    angleY -90.849
+   }
+   {
+    ID "598AAA8BE34989CA"
+    components {
+     Hierarchy "{598AAA88FD69DB0D}" {
+      Enabled 1
+     }
+    }
+    coords 1.994 0 -0.669
+    angleY -88.672
+   }
+   {
+    ID "598AAA8BE34BFD08"
+    components {
+     Hierarchy "{598AAA88FD69DB09}" {
+      Enabled 1
+     }
+    }
+    coords -1.882 0 2.224
+    angleY -90.53
+   }
+   {
+    ID "598AAA8BE34E741E"
+    components {
+     Hierarchy "{598AAA88FD69DB0A}" {
+      Enabled 1
+     }
+    }
+    coords 1.945 0 0.773
+    angleY -91.613
+   }
+   {
+    ID "598AAA8BE34E9B10"
+    components {
+     Hierarchy "{598AAA88FD69DB17}" {
+      Enabled 1
+     }
+     RplComponent "{598AAA892F4BDCC1}" {
+     }
+    }
+    coords 1.975 0 3.629
+    angleY -89.027
+   }
+   {
+    ID "598AAA8BE34E9B11"
+    components {
+     Hierarchy "{598AAA88FD69DB16}" {
+      Enabled 1
+     }
+    }
+    coords 2.038 0 2.213
+    angleY 89.47
+   }
+   {
+    ID "598AAA8BE34EC787"
+    components {
+     Hierarchy "{598AAA88FD69DB0B}" {
+      Enabled 1
+     }
+    }
+    coords -1.909 0 0.735
+    angleY -89.638
+   }
+  }
+  GenericEntity : "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et" {
+   ID "598AAA8BE34EB208"
+   components {
+    Hierarchy "{598AAA88FD69DB03}" {
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+   coords 2.774 0.993 0.392
+   angleY 0
+  }
+  $grp GenericEntity : "{ECBBB8676DE22C8A}Prefabs/Compositions/Misc/SubCompositions/PalletMRE_USSR_01.et" {
+   {
+    ID "598AAA8BE34F15D5"
+    components {
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -2.847 0.1 3.642
+    angleY 3.558
+    {
+     GenericEntity {
+      ID "5704E20D7ADB4019"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09307A0FD}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4041"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09303EF97}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4066"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09300EF29}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB40D2"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D093007D6D}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB411B"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D093011B15}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB412C"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933EB723}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4137"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933E5473}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4146"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933F08C4}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB416F"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933CE331}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4172"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933DA09C}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4188"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933D6E35}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4190"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933A357B}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB41AD"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933BD56E}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB41C3"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D093380E7B}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB41FA"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09339B648}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB42AA"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09339614C}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+    }
+   }
+   {
+    ID "598AAA8BE34F15D8"
+    components {
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords -1.897 0.1 3.594
+    angleY -3.266
+    {
+     GenericEntity {
+      ID "5704E20D7ADB4019"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09307A0FD}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4041"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09303EF97}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4066"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09300EF29}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB40D2"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D093007D6D}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB411B"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D093011B15}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB412C"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933EB723}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4137"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933E5473}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4146"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933F08C4}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB416F"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933CE331}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4172"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933DA09C}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4188"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933D6E35}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB4190"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933A357B}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB41AD"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D0933BD56E}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB41C3"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D093380E7B}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB41FA"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09339B648}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+     GenericEntity {
+      ID "5704E20D7ADB42AA"
+      components {
+       MeshObject "{5872F0EB7FA40561}" {
+        Object "{35F2A7661DCF8713}Assets/Props/Military/Camps/BoxMRE_01/BoxMRE_01.xob"
+       }
+       Hierarchy "{5706F8D09339614C}" {
+       }
+       RigidBody "{5872F0EB7DFB5A9D}" {
+        ResponseIndex "TinyDestructible"
+        ModelGeometry 1
+        Static 1
+       }
+       SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       }
+       RplComponent "{5624A88DC2D9928D}" {
+        Enabled 1
+       }
+      }
+     }
+    }
+   }
+  }
+  $grp GenericEntity : "{F4BB6B6A0486F797}Prefabs/Props/Industrial/BarrelMetal_01_military.et" {
+   {
+    ID "598AAA8BE34F15DE"
+    components {
+     Hierarchy "{598AAA88FD69DB06}" {
+      Enabled 1
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.68 0.5 4.552
+    angleY 91.494
+    angleZ -180
+    scale 0.9
+   }
+   {
+    ID "598AAA8BE34FCA40"
+    components {
+     Hierarchy "{598AAA88FD69DB07}" {
+      Enabled 1
+     }
+     RplComponent "{5624A88DC2D9928D}" {
+      Enabled 1
+     }
+    }
+    coords 2.68 0 4.552
+    angleY 88.506
+   }
+  }
+ }
+}
