@@ -66,20 +66,20 @@ Some default prefabs has disabled RplComponent on them or even no RplComponent. 
 ![image](./Art/RplDisabled.png?raw=true)
 
 Cause of that you have to do this steps if a prefab only spawns on the master:  
-1. Clone it to you project
-![image](./Art/RplFirst.png?raw=true)
-2. Spawn it
-![image](./Art/RplSecond.png?raw=true)
-3. Break prefab Instance until its red
-![image](./Art/BreakPrefab.png?raw=true)
-4. Enable or add all the missing RplComponents
-![image](./Art/RplThird.png?raw=true)
-5. Remove the old prefab
-![image](./Art/RplDel.png?raw=true)
-5. Make a new one with drag and drop
-![image](./Art/DragAndDrop.png?raw=true)
-6. Replace it on the spawner and delete the preview that we spawned and it should work :D
-![image](./Art/Replace.png?raw=true)
+1. Clone it to you project  
+![image](./Art/RplFirst.png?raw=true)  
+2. Spawn it  
+![image](./Art/RplSecond.png?raw=true)  
+3. Break prefab Instance until its red  
+![image](./Art/BreakPrefab.png?raw=true)  
+4. Enable or add all the missing RplComponents  
+![image](./Art/RplThird.png?raw=true)  
+5. Remove the old prefab  
+![image](./Art/RplDel.png?raw=true)  
+5. Make a new one with drag and drop  
+![image](./Art/DragAndDrop.png?raw=true)  
+6. Replace it on the spawner and delete the preview that we spawned and it should work :D  
+![image](./Art/Replace.png?raw=true)  
 
 
 Donate:
