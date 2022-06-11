@@ -1,0 +1,18 @@
+NO_SCR_SpawnTrigger {
+ ID "5996DCE76DFE9712"
+ components {
+  Hierarchy "{5996DCE7764623AF}" {
+  }
+  RplComponent "{5996DCE7764623A7}" {
+  }
+ }
+ coords 217.001 10.001 163.62
+ TriggerShapeType Sphere
+ SphereRadius 150
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ ClassFilter "ChimeraCharacter"
+ m_bDelete 1
+ m_bShouldUseDynamicFaction 1
+ m_bObjectNameWithFactionGroupListOnIt "FactionGroupReferenceList"
+}

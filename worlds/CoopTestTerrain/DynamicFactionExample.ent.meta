@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{6BCBA6AB75649B27}worlds/CoopTestTerrain/DynamicFactionExample.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

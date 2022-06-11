@@ -19,7 +19,14 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 
 	[Attribute("USSR", UIWidgets.EditBox, "Faction")]
 	FactionKey m_faction;
-		
+
+	[Attribute("0", UIWidgets.CheckBox, "Check this box if the spawns should use dynamic faction!")]
+	bool m_bShouldUseDynamicFaction;	
+
+	[Attribute("0", UIWidgets.EditBox, "Object name with faction group list on it. Only needed when m_bShouldUseDynamicFaction is set!")]
+	string m_bObjectNameWithFactionGroupListOnIt;	
+	
+
 	BaseGameMode GameMode;
 	bool alreadySpawned = false;
 	IEntity Owner;
@@ -45,6 +52,9 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 		
 		if(m_pRplComponent.IsMaster())
 		
+		
+		if(m_bShouldUseDynamicFaction &&m_bObjectNameWithFactionGroupListOnIt == "" ) 
+			Debug.Error("NO_SCR_SpawnTrigger if you use the dynamicFactionGroups please enter the name of the object with list reference on it into m_bObjectNameWithFactionGroupListOnIt ");
 		
 		GameSingleEntity =  GetGame();
 		GameMode = GameSingleEntity.GetGameMode();

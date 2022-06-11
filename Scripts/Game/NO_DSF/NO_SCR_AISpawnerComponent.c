@@ -19,6 +19,9 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	[Attribute("5", UIWidgets.Slider, "Negative spawn offset on the Z axis.", "5 1000 1")]
 	protected float m_fNegativeZOffset;
 
+	[Attribute("1", UIWidgets.ComboBox, "Which group to spawn with the dynamic Faction","", ParamEnumArray.FromEnum(AiGroupType))]
+	protected AiGroupType m_eAiGroupType;	
+	
 	IEntity Owner;
 
 
@@ -87,13 +90,35 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		auto playerManager = game.GetPlayerManager();
 		if(!playerManager) return false;
 		
-		auto world = Owner.GetWorld();
+		BaseWorld world = Owner.GetWorld();
 		if(!world) return false;
 		
 		array<int> players = {};
 		playerManager.GetAllPlayers(players);
-		CountSpawnsByOnlinePlayer toUse;
+		ref array<ResourceName> ressourceNamesToSpawn = new array<ResourceName>();
 		
+		bool UseDynamicFaction = false;
+		
+		FactionReferences factionToUse;
+		IEntity parent = Owner.GetParent();
+		if(parent)
+		{
+			NO_SCR_SpawnTrigger spawnTrigger = NO_SCR_SpawnTrigger.Cast(parent);
+			if(spawnTrigger)
+			{
+				UseDynamicFaction = spawnTrigger.m_bShouldUseDynamicFaction;
+				NO_SCR_FactionGroupListComponent FactionGroupListComponent = NO_SCR_FactionGroupListComponent.Cast(world.FindEntityByName(spawnTrigger.m_bObjectNameWithFactionGroupListOnIt).FindComponent(NO_SCR_FactionGroupListComponent));
+				foreach(FactionReferences factionReference : FactionGroupListComponent.m_rFactionPrefabs)
+				{
+					if(factionReference.m_faction==FactionGroupListComponent.m_factionToSpawnWhenDynamicFaction)
+					{
+						factionToUse = factionReference;
+					}
+				}
+			}
+		}
+		
+		CountSpawnsByOnlinePlayer toUse;
 		foreach (CountSpawnsByOnlinePlayer spawn : m_rnDefaultPrefabs)
 		{
 			if(spawn.CountOfPlayers<=players.Count())
@@ -101,8 +126,157 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 				toUse = spawn;
 			}
 		}
-		bool first = true;
-		foreach (ResourceName ressourceName : toUse.prefab)
+		
+		//Todo only if not dynamicFactionSpawn
+		if(UseDynamicFaction)
+		{
+			//Todo if dynamicFactionSpawn
+			
+
+			if(m_eAiGroupType == AiGroupType.FireTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.FireTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.LightFireTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.LightFireTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.MachineGunTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.MachineGunTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.RifleSquad)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.RifleSquad);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.SentryTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.SentryTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.SniperTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.SniperOrManeuverTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.GLTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.GLTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.LATTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.LatOrAtTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.SuppressTeam)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.SuppressTeam);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam1)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam1);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam2)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam2);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam3)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam3);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam4)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam4);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam5)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam5);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam6)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam6);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam7)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam7);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam8)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam8);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam9)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam9);
+				}
+			}
+			else if(m_eAiGroupType == AiGroupType.CustomTeam10)
+			{
+				for(int i = 0; i < toUse.prefab.Count(); ++i)
+				{
+					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam10);
+				}
+			}
+		}
+		else
+		{
+			
+			ressourceNamesToSpawn = toUse.prefab;
+		}
+		
+		
+		
+		bool first = true;	
+		foreach (ResourceName ressourceName : ressourceNamesToSpawn)
 		{
 			Resource agentPrefab = Resource.Load(ressourceName);
 			if (!agentPrefab)
@@ -111,6 +285,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 				return false;
 			}
 		
+
 			vector tmp = parentVector[3];
 			vector newPos;
 			if(first)

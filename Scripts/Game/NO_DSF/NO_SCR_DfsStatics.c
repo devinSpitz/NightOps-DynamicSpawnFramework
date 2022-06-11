@@ -38,4 +38,29 @@ class NO_SCR_DfsStatics
 		return null;
 	}
 	
+	
 }
+
+
+enum AiGroupType
+{
+	FireTeam,
+	LightFireTeam,
+	MachineGunTeam,
+	RifleSquad,
+	SentryTeam,
+	SniperTeam,
+	GLTeam,
+	LATTeam,
+	SuppressTeam,
+	CustomTeam1,
+	CustomTeam2,
+	CustomTeam3,
+	CustomTeam4,
+	CustomTeam5,
+	CustomTeam6,
+	CustomTeam7,
+	CustomTeam8,
+	CustomTeam9,
+	CustomTeam10,
+};
