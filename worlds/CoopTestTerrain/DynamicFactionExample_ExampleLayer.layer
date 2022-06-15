@@ -52,6 +52,17 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
     coords 82.117 0.607 136.025
    }
    GenericEntity SpawnAiDefend : "{7EB6AE656E46423B}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiDefend.et" {
+    components {
+     NO_SCR_AISpawnerComponent "{59889B97C35F8467}" {
+      m_rSpawns {
+       CountSpawnsByOnlinePlayerWithManager "{599EF0F4E403E074}" {
+        prefab + {
+         0 0
+        }
+       }
+      }
+     }
+    }
     coords -29.63 0 -114.09
    }
    GenericEntity SpawnAiGroupGoToGetInNearest : "{9D3BB934DD14BDC5}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGroupGoToGetInNearest.et" {
