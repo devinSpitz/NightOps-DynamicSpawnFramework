@@ -24,7 +24,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	
 	IEntity Owner;
 
-
+	NO_SCR_SpawnManager spawnManager;
 	vector parentVector[4]
 	// Attached component.
 	protected RplComponent m_pRplComponent;
@@ -36,7 +36,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	protected ref array<AIAgent> m_pSpawnedAgents = new array<AIAgent>();
 	
 	//! Invoker which we can hook onto - see typedef above
-	protected ref ScriptInvoker_OnSpawnerEmpty m_pOnEmptyInvoker = new ScriptInvoker_OnSpawnerEmpty();
+	protected ref ScriptInvoker_OnSpawnerEmpty m_pOnEmptyInvokerNightOpsAiSpawner = new ScriptInvoker_OnSpawnerEmpty();
 	
 	
 	array<AIAgent> GetSpawnedAgent()
@@ -47,7 +47,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker_OnSpawnerEmpty GetOnEmptyInvoker()
 	{
-		return m_pOnEmptyInvoker;
+		return m_pOnEmptyInvokerNightOpsAiSpawner;
 	}
 
 	
@@ -97,20 +97,16 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		playerManager.GetAllPlayers(players);
 		ref array<ResourceName> ressourceNamesToSpawn = new array<ResourceName>();
 		
-		bool UseDynamicFaction = false;
-		
 		FactionReferences factionToUse;
 		IEntity parent = Owner.GetParent();
 		if(parent)
 		{
 			NO_SCR_SpawnTrigger spawnTrigger = NO_SCR_SpawnTrigger.Cast(parent);
-			if(spawnTrigger)
+			if(spawnTrigger && spawnManager)
 			{
-				UseDynamicFaction = spawnTrigger.m_bShouldUseDynamicFaction;
-				NO_SCR_FactionGroupListComponent FactionGroupListComponent = NO_SCR_FactionGroupListComponent.Cast(world.FindEntityByName(spawnTrigger.m_bObjectNameWithFactionGroupListOnIt).FindComponent(NO_SCR_FactionGroupListComponent));
-				foreach(FactionReferences factionReference : FactionGroupListComponent.m_rFactionPrefabs)
+				foreach(FactionReferences factionReference : spawnManager.m_rFactionPrefabs)
 				{
-					if(factionReference.m_faction==FactionGroupListComponent.m_factionToSpawnWhenDynamicFaction)
+					if(factionReference.m_faction==spawnManager.m_factionToSpawnWhenDynamicFaction)
 					{
 						factionToUse = factionReference;
 					}
@@ -128,7 +124,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		}
 		
 		//Todo only if not dynamicFactionSpawn
-		if(UseDynamicFaction)
+		if(spawnManager)
 		{
 			//Todo if dynamicFactionSpawn
 			
@@ -290,11 +286,11 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 			vector newPos;
 			if(first)
 			{
-			 newPos = Vector(tmp[0], tmp[1], tmp[2]);
+			 	newPos = Vector(tmp[0], tmp[1], tmp[2]);
 			}
 			else
 			{
-			 newPos = Vector(tmp[0], tmp[1], tmp[2]+m_fNegativeZOffset);
+			 	newPos = Vector(tmp[0], tmp[1], tmp[2]+m_fNegativeZOffset);
 			}
 			vector pos;			
 			SCR_WorldTools.FindEmptyTerrainPosition(pos,newPos , 10,2,2,TraceFlags.VISIBILITY);
@@ -413,7 +409,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected event void OnEmpty()
 	{
-		m_pOnEmptyInvoker.Invoke();
+		m_pOnEmptyInvokerNightOpsAiSpawner.Invoke();
 		m_pSpawnedAgents = new array<AIAgent>();
 		DoSpawnDefault();
 		
@@ -454,6 +450,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 			return;
 
 		SetEventMask(owner, EntityEvent.INIT);
+		spawnManager =  GetSpawnManager();
 	}
 
 	//------------------------------------------------------------------------------------------------

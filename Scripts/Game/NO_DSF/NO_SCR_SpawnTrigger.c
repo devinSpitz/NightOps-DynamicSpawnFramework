@@ -20,11 +20,8 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 	[Attribute("USSR", UIWidgets.EditBox, "Faction")]
 	FactionKey m_faction;
 
-	[Attribute("0", UIWidgets.CheckBox, "Check this box if the spawns should use dynamic faction!")]
-	bool m_bShouldUseDynamicFaction;	
-
-	[Attribute("0", UIWidgets.EditBox, "Object name with faction group list on it. Only needed when m_bShouldUseDynamicFaction is set!")]
-	string m_bObjectNameWithFactionGroupListOnIt;	
+	[Attribute("0", UIWidgets.CheckBox, "Triggers by players only!")]
+	bool m_bShouldTriggerOnlyOnPlayerContact;	
 	
 
 	BaseGameMode GameMode;
@@ -51,10 +48,6 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 		
 		
 		if(m_pRplComponent.IsMaster())
-		
-		
-		if(m_bShouldUseDynamicFaction &&m_bObjectNameWithFactionGroupListOnIt == "" ) 
-			Debug.Error("NO_SCR_SpawnTrigger if you use the dynamicFactionGroups please enter the name of the object with list reference on it into m_bObjectNameWithFactionGroupListOnIt ");
 		
 		GameSingleEntity =  GetGame();
 		GameMode = GameSingleEntity.GetGameMode();
@@ -83,9 +76,16 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
         if (!cc) return false; // If the entity is not a person, filter it out
         if (cc.GetFactionKey() != m_faction) return false; // If the entity does not have the Faction key of USSR, filter it out
         if (!IsAlive(cc)) return false; // If the entity is dead, filter it out
+		if(m_bShouldTriggerOnlyOnPlayerContact && !IsPlayer(ent) ) return false;
         return true; // Otherwise, include it!
     }
  
+	bool IsPlayer(IEntity ent) 
+    {
+      int playerId = GameSingleEntity.GetPlayerManager().GetPlayerIdFromControlledEntity(ent); 
+      return playerId > 0;
+    }
+	
     override void OnActivate(IEntity ent)
     {
         ++m_iCount; // When activated (i.e. when an alive USSR soldier entity enters), add 1 to the number m_iCount
