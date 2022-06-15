@@ -5,22 +5,22 @@ class NO_SCR_SpawnTriggerClass: SCR_BaseTriggerEntityClass
 
 class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 {
-	[Attribute("0", UIWidgets.CheckBox, "If checked, delete/Despawn when no player is in Trigger!")]
+	[Attribute("0", UIWidgets.CheckBox, "If checked, delete/Despawn when no player is in Trigger!",category: "Spawn Trigger")]
 	protected bool m_bDelete;	
-	[Attribute("0", UIWidgets.CheckBox, "Update Navmesh when spawning?")]
+	[Attribute("0", UIWidgets.CheckBox, "Update Navmesh when spawning?",category: "Spawn Trigger")]
 	protected bool updateNavmesh;	
 	
 	
-	[Attribute("0", UIWidgets.CheckBox, "Check if the AI spawns should be randomized!")]
+	[Attribute("0", UIWidgets.CheckBox, "Check if the AI spawns should be randomized!",category: "Spawn Trigger")]
 	protected bool m_bRandomizedSpawns;	
 	
-	[Attribute("0", UIWidgets.Slider, "How many percentige of the AI spawns should be populated (only when RandomizedSpawns are enabled)", "0 100 1")]
+	[Attribute("0", UIWidgets.Slider, "How many percentige of the AI spawns should be populated (only when RandomizedSpawns are enabled)", "0 100 1",category: "Spawn Trigger")]
 	protected int PercentageAi;
 
-	[Attribute("USSR", UIWidgets.EditBox, "Faction")]
+	[Attribute("USSR", UIWidgets.EditBox, "Faction which should Trigger",category: "Spawn Trigger")]
 	FactionKey m_faction;
 
-	[Attribute("0", UIWidgets.CheckBox, "Triggers by players only!")]
+	[Attribute("0", UIWidgets.CheckBox, "Triggers by players only!",category: "Spawn Trigger")]
 	bool m_bShouldTriggerOnlyOnPlayerContact;	
 	
 
