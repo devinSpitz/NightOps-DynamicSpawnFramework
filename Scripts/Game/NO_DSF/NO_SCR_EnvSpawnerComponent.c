@@ -35,7 +35,7 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 	protected ref array<IEntity> m_pSpawnedEnvs = new array<IEntity>();
 	
 	//! Invoker which we can hook onto - see typedef above
-	protected ref ScriptInvoker_OnSpawnerEmptyEnv m_pOnEmptyInvoker = new ScriptInvoker_OnSpawnerEmptyEnv();
+	protected ref ScriptInvoker_OnSpawnerEmptyEnv m_pOnEmptyInvokerEnvSpawner = new ScriptInvoker_OnSpawnerEmptyEnv();
 	
 	
 	array<IEntity> GetSpawnedenviroment()
@@ -60,7 +60,7 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker_OnSpawnerEmptyEnv GetOnEmptyInvoker()
 	{
-		return m_pOnEmptyInvoker;
+		return m_pOnEmptyInvokerEnvSpawner;
 	}
 	
 	

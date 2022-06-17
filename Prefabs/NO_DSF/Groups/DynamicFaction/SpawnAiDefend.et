@@ -1,0 +1,38 @@
+GenericEntity {
+ ID "599F155780E41BD4"
+ components {
+  Hierarchy "{59889B937B2716D9}" {
+  }
+  NO_SCR_AISpawnerComponent "{59889B97C35F8467}" {
+   m_rSpawns {
+    CountSpawnsByOnlinePlayerWithManager "{599EF0F4E403E074}" {
+     prefab {
+      1 1 1
+     }
+    }
+    CountSpawnsByOnlinePlayerWithManager "{599F1556B1264CEF}" {
+     CountOfPlayers 2
+     prefab {
+      1 1 1
+     }
+    }
+   }
+   m_eAiGroupType PleaseSelect
+  }
+  RplComponent "{59889B9363AA480A}" {
+  }
+ }
+ coords -29.63 0 -114.09
+ {
+  SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+   ID "599F155780E41BD6"
+   components {
+    Hierarchy "{59889B937950DF1F}" {
+    }
+    RplComponent "{59889B93656DE9C1}" {
+    }
+   }
+   coords 0 0 0
+  }
+ }
+}

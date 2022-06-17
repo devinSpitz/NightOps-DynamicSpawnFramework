@@ -1,0 +1,42 @@
+NO_SCR_SpawnManager {
+ ID "599EF0F3936BC048"
+ coords 219.176 10.001 171.539
+ m_rFactionPrefabs {
+  FactionReferences "{599EF0F321AB8FBB}" {
+   FireTeam "{30ED11AA4F0D41E5}Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et"
+   LightFireTeam "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
+   MachineGunTeam "{A2F75E45C66B1C0A}Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et"
+   RifleSquad "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+   SentryTeam "{CB58D90EA14430AD}Prefabs/Groups/OPFOR/Group_USSR_SentryTeam.et"
+   SniperOrManeuverTeam "{1A5F0D93609DA5DA}Prefabs/Groups/OPFOR/Group_USSR_ManeuverGroup.et"
+   GLTeam "{43C7A28EEB660FF8}Prefabs/Groups/OPFOR/Group_USSR_Team_GL.et"
+   LatOrAtTeam "{96BAB56E6558788E}Prefabs/Groups/OPFOR/Group_USSR_Team_AT.et"
+   SuppressTeam "{1C0502B5729E7231}Prefabs/Groups/OPFOR/Group_USSR_Team_Suppress.et"
+  }
+  FactionReferences "{599EF0F322A1645A}" {
+   m_faction "FIA"
+   FireTeam "{5BEA04939D148B1D}Prefabs/Groups/INDFOR/Group_FIA_FireTeam.et"
+   LightFireTeam "{5BEA04939D148B1D}Prefabs/Groups/INDFOR/Group_FIA_FireTeam.et"
+   MachineGunTeam "{22F33D3EC8F281AB}Prefabs/Groups/INDFOR/Group_FIA_MachineGunTeam.et"
+   RifleSquad "{CE41AF625D05D0F0}Prefabs/Groups/INDFOR/Group_FIA_RifleSquad.et"
+   SentryTeam "{2E9C920C3ACA2C6F}Prefabs/Groups/INDFOR/Group_FIA_ReconTeam.et"
+   SniperOrManeuverTeam "{6307F42403E9B8A4}Prefabs/Groups/INDFOR/Group_FIA_SharpshooterTeam.et"
+   GLTeam "{2E9C920C3ACA2C6F}Prefabs/Groups/INDFOR/Group_FIA_ReconTeam.et"
+   LatOrAtTeam "{2CC26054775FBA2C}Prefabs/Groups/INDFOR/Group_FIA_Team_AT.et"
+   SuppressTeam "{CE41AF625D05D0F0}Prefabs/Groups/INDFOR/Group_FIA_RifleSquad.et"
+  }
+  FactionReferences "{599EF0F322CC7AD7}" {
+   m_faction "US"
+   FireTeam "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et"
+   LightFireTeam "{FCF7F5DC4F83955C}Prefabs/Groups/BLUFOR/Group_US_LightFireTeam.et"
+   MachineGunTeam "{958039B857396B7B}Prefabs/Groups/BLUFOR/Group_US_MachineGunTeam.et"
+   RifleSquad "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+   SentryTeam "{3BF36BDEEB33AEC9}Prefabs/Groups/BLUFOR/Group_US_SentryTeam.et"
+   SniperOrManeuverTeam "{D807C7047E818488}Prefabs/Groups/BLUFOR/Group_US_SniperTeam.et"
+   GLTeam "{DE747BC9217D383C}Prefabs/Groups/BLUFOR/Group_US_Team_GL.et"
+   LatOrAtTeam "{FAEA8B9E1252F56E}Prefabs/Groups/BLUFOR/Group_US_Team_LAT.et"
+   SuppressTeam "{81B6DBF2B88545F5}Prefabs/Groups/BLUFOR/Group_US_Team_Suppress.et"
+  }
+ }
+ m_factionToSpawnWhenDynamicFaction "FIA"
+}

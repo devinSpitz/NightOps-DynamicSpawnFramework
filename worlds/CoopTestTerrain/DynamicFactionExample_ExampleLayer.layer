@@ -2,152 +2,6 @@ SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
  coords 77.452 9.967 177.265
 }
 $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et" {
- Ai {
-  coords 257.919 10.001 190.922
-  SphereRadius 300
-  m_bDelete 0
-  m_bShouldUseDynamicFaction 1
-  m_bObjectNameWithFactionGroupListOnIt "FactionGroupReferenceList"
-  {
-   GenericEntity : "{1E6650994A437A75}Prefabs/NO_DSF/Groups/SpawnAiGroupRunToGetInNearest.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B97EDAEDA30}" {
-      m_eAiGroupType FireTeam
-     }
-    }
-    coords 55.893 -0.002 -90.987
-    angleY 0
-   }
-   GenericEntity : "{1F6605BF2EBE43B8}Prefabs/NO_DSF/Groups/SpawnAiDefend.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B97C35F8467}" {
-      m_eAiGroupType FireTeam
-     }
-    }
-    coords 96.807 0 196.951
-   }
-   GenericEntity : "{211A178E09D4A982}Prefabs/NO_DSF/Groups/SpawnAiGroupGetInNearest.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B97CD4397F5}" {
-      m_eAiGroupType FireTeam
-     }
-    }
-    coords 158.967 0 -87.051
-   }
-   GenericEntity : "{549CF3ED3BEE22B1}Prefabs/NO_DSF/Groups/SpawnAiGroupGoToGetInNearest.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B97EDAEDA30}" {
-      m_eAiGroupType LATTeam
-     }
-    }
-    coords 41.16 0 -121.307
-    angleY -4.262
-    {
-     SCR_AIWaypoint {
-      ID "59889B900B1FA754"
-      coords -18.652 -0.002 16.897
-     }
-     SCR_AIWaypoint {
-      ID "59889B900B1FA755"
-      coords -30.875 -0.002 25.895
-     }
-     SCR_BoardingWaypoint {
-      ID "59889B900B1F8CB0"
-      coords -55.482 -0.002 39.5
-     }
-    }
-   }
-   GenericEntity : "{750D93B44E42F57B}Prefabs/NO_DSF/Groups/SpawnAiGroupPatrol.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B9410166C47}" {
-      m_eAiGroupType MachineGunTeam
-      m_rnDefaultPrefabs {
-       CountSpawnsByOnlinePlayer "{5988C24AE78E5595}" {
-        prefab {
-         "{958039B857396B7B}Prefabs/Groups/BLUFOR/Group_US_MachineGunTeam.et"
-        }
-       }
-      }
-     }
-    }
-    coords -0.678 0.747 21.01
-    {
-     AIWaypointCycle {
-      ID "59889B900EBD4CB5"
-      coords 0 0 0
-     }
-     SCR_AIWaypoint {
-      ID "59889B900EBD4CB4"
-      coords -11.393 -0.749 -4.008
-     }
-     SCR_AIWaypoint {
-      ID "59889B900EBDF8B9"
-      coords -8.383 -0.749 16.959
-     }
-     SCR_AIWaypoint {
-      ID "59889B900EBDF8BA"
-      coords -24.736 -0.748 14.553
-     }
-    }
-   }
-   GenericEntity : "{760612B75AA5BCFA}Prefabs/NO_DSF/Groups/SpawnAiGroupMove.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B97EB1965B4}" {
-      m_eAiGroupType SentryTeam
-     }
-    }
-    coords 94.98 0 -54.359
-    angleY -46.899
-    {
-     SCR_AIWaypoint {
-      ID "59889B900CE8FA54"
-      coords 0.209 -0.002 39.406
-     }
-     SCR_AIWaypoint {
-      ID "59889B900CE8FA55"
-      coords -3.098 -0.002 89.819
-     }
-    }
-   }
-   GenericEntity : "{DAFA3AB9E07504D3}Prefabs/NO_DSF/Groups/SpawnAiGoToDefend.et" {
-    components {
-     NO_SCR_AISpawnerComponent "{59889B9412480009}" {
-      m_eAiGroupType SniperTeam
-      m_rnDefaultPrefabs {
-       CountSpawnsByOnlinePlayer "{5988C24B1EEE0486}" {
-       }
-       CountSpawnsByOnlinePlayer "{598A941582DA250B}" {
-        CountOfPlayers 2
-        prefab {
-         "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et" "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et"
-        }
-       }
-      }
-     }
-    }
-    coords 71.646 1.94 24.235
-    angleY 0
-    {
-     SCR_AIWaypoint {
-      ID "59889B9007A41078"
-      coords 14.869 -1.942 13.563
-     }
-     SCR_AIWaypoint {
-      ID "59889B9007A4107B"
-      coords 31.713 -1.942 27.451
-     }
-     SCR_AIWaypoint {
-      ID "59889B9007A42CE1"
-      coords 47.344 -1.941 41.046
-     }
-     SCR_DefendWaypoint {
-      ID "59889B9007A45469"
-      coords 79.109 -1.942 69.853
-     }
-    }
-   }
-  }
- }
  Env {
   coords 257.919 10.001 190.922
   SphereRadius 300
@@ -156,7 +10,7 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
   {
    $grp GenericEntity : "{D8F00B5CFC8514F1}Prefabs/NO_DSF/Vehicles/SpawnVehicle.et" {
     {
-     coords 160.908 0 -92.219
+     coords 64.83 0 -120.045
     }
     {
      components {
@@ -171,23 +25,60 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
        }
       }
      }
-     coords -28.783 0 -82.601
+     coords -28.603 0 91.663
     }
     {
-     coords -0.486 0 -56.499
+     coords 25.202 0 168.713
     }
    }
    GenericEntity : "{F7A42562EE8E24E6}Prefabs/NO_DSF/Structures/SpawnStructure.et" {
-    coords -19.183 0 33.651
+    coords 44.893 1.133 2.273
    }
   }
  }
-}
-GenericEntity FactionGroupReferenceList : "{D3D7411430CACC5C}Prefabs/NO_DSF/DynamicFaction/FactionGroupReferenceList.et" {
- components {
-  NO_SCR_FactionGroupListComponent "{5996DCE4EF333080}" {
-   m_factionToSpawnWhenDynamicFaction "FIA"
+ Ai {
+  coords 257.919 10.001 190.922
+  TriggerShapeType Sphere
+  SphereRadius 300
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  ClassFilter "ChimeraCharacter"
+  m_bDelete 0
+  {
+   GenericEntity SpawnAiGroupPatrol : "{3D2DDB39574FFAFE}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGroupPatrol.et" {
+    coords 62.486 0 -9.749
+   }
+   GenericEntity SpawnAiGroupRunToGetInNearest : "{454543CB92EDB4BA}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGroupRunToGetInNearest.et" {
+    coords 82.117 0.607 136.025
+   }
+   GenericEntity SpawnAiDefend : "{7EB6AE656E46423B}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiDefend.et" {
+    components {
+     NO_SCR_AISpawnerComponent "{59889B97C35F8467}" {
+      m_rSpawns {
+       CountSpawnsByOnlinePlayerWithManager "{599EF0F4E403E074}" {
+        prefab + {
+         0 0
+        }
+       }
+      }
+     }
+    }
+    coords -29.63 0 -114.09
+   }
+   GenericEntity SpawnAiGroupGoToGetInNearest : "{9D3BB934DD14BDC5}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGroupGoToGetInNearest.et" {
+    coords 28.12 0.523 59.309
+    angleY -4.262
+   }
+   GenericEntity SpawnAiGroupGetInNearest : "{B10CB4AECDBF2D59}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGroupGetInNearest.et" {
+    coords 65.901 0 -117.639
+   }
+   GenericEntity SpawnAiGroupMove : "{B2747E09BE37DDD3}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGroupMove.et" {
+    coords 20.76 0 -64.488
+    angleY -46.899
+   }
+   GenericEntity SpawnAiGoToDefend : "{CD5A05CDEB0894EE}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGoToDefend.et" {
+    coords 92.223 2.841 -67.85
+   }
   }
  }
- coords 226.607 10.001 186.009
 }

@@ -132,7 +132,7 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
      coords -28.783 0 -82.601
     }
     {
-     coords -0.486 -0 -56.499
+     coords -0.486 0 -56.499
     }
    }
    GenericEntity : "{F7A42562EE8E24E6}Prefabs/NO_DSF/Structures/SpawnStructure.et" {

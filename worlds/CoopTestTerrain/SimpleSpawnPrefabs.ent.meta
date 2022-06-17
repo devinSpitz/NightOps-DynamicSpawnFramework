@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E6945F6DC070C755}Worlds/CoopTest.ent"
+ Name "{9561885B9DCE38DA}worlds/CoopTestTerrain/SimpleSpawnPrefabs.ent"
  Configurations {
   ENTResourceClass PC {
   }

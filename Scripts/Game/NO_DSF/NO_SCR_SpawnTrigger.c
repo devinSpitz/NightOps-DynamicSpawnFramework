@@ -5,26 +5,23 @@ class NO_SCR_SpawnTriggerClass: SCR_BaseTriggerEntityClass
 
 class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 {
-	[Attribute("0", UIWidgets.CheckBox, "If checked, delete/Despawn when no player is in Trigger!")]
+	[Attribute("0", UIWidgets.CheckBox, "If checked, delete/Despawn when no player is in Trigger!",category: "Spawn Trigger")]
 	protected bool m_bDelete;	
-	[Attribute("0", UIWidgets.CheckBox, "Update Navmesh when spawning?")]
+	[Attribute("0", UIWidgets.CheckBox, "Update Navmesh when spawning?",category: "Spawn Trigger")]
 	protected bool updateNavmesh;	
 	
 	
-	[Attribute("0", UIWidgets.CheckBox, "Check if the AI spawns should be randomized!")]
+	[Attribute("0", UIWidgets.CheckBox, "Check if the AI spawns should be randomized!",category: "Spawn Trigger")]
 	protected bool m_bRandomizedSpawns;	
 	
-	[Attribute("0", UIWidgets.Slider, "How many percentige of the AI spawns should be populated (only when RandomizedSpawns are enabled)", "0 100 1")]
+	[Attribute("0", UIWidgets.Slider, "How many percentige of the AI spawns should be populated (only when RandomizedSpawns are enabled)", "0 100 1",category: "Spawn Trigger")]
 	protected int PercentageAi;
 
-	[Attribute("USSR", UIWidgets.EditBox, "Faction")]
+	[Attribute("USSR", UIWidgets.EditBox, "Faction which should Trigger",category: "Spawn Trigger")]
 	FactionKey m_faction;
 
-	[Attribute("0", UIWidgets.CheckBox, "Check this box if the spawns should use dynamic faction!")]
-	bool m_bShouldUseDynamicFaction;	
-
-	[Attribute("0", UIWidgets.EditBox, "Object name with faction group list on it. Only needed when m_bShouldUseDynamicFaction is set!")]
-	string m_bObjectNameWithFactionGroupListOnIt;	
+	[Attribute("0", UIWidgets.CheckBox, "Triggers by players only!",category: "Spawn Trigger")]
+	bool m_bShouldTriggerOnlyOnPlayerContact;	
 	
 
 	BaseGameMode GameMode;
@@ -51,10 +48,6 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 		
 		
 		if(m_pRplComponent.IsMaster())
-		
-		
-		if(m_bShouldUseDynamicFaction &&m_bObjectNameWithFactionGroupListOnIt == "" ) 
-			Debug.Error("NO_SCR_SpawnTrigger if you use the dynamicFactionGroups please enter the name of the object with list reference on it into m_bObjectNameWithFactionGroupListOnIt ");
 		
 		GameSingleEntity =  GetGame();
 		GameMode = GameSingleEntity.GetGameMode();
@@ -83,9 +76,16 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
         if (!cc) return false; // If the entity is not a person, filter it out
         if (cc.GetFactionKey() != m_faction) return false; // If the entity does not have the Faction key of USSR, filter it out
         if (!IsAlive(cc)) return false; // If the entity is dead, filter it out
+		if(m_bShouldTriggerOnlyOnPlayerContact && !IsPlayer(ent) ) return false;
         return true; // Otherwise, include it!
     }
  
+	bool IsPlayer(IEntity ent) 
+    {
+      int playerId = GameSingleEntity.GetPlayerManager().GetPlayerIdFromControlledEntity(ent); 
+      return playerId > 0;
+    }
+	
     override void OnActivate(IEntity ent)
     {
         ++m_iCount; // When activated (i.e. when an alive USSR soldier entity enters), add 1 to the number m_iCount

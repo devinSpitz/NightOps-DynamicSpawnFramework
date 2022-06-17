@@ -10,33 +10,45 @@ typedef ScriptInvokerBase<ScriptInvoker_OnSpawnerEmptyDelegate> ScriptInvoker_On
 //------------------------------------------------------------------------------------------------
 class NO_SCR_AISpawnerComponent : ScriptComponent
 {
-	[Attribute("0", UIWidgets.CheckBox, "If checked, spawns group immediately.")]
+	[Attribute("0", UIWidgets.CheckBox, "If checked, spawns group immediately FYI: if you change the faction on the spawn manager while inGame the already spawned AI's will not respawn as new faction.",category: "Spawn Manager")]
 	protected bool m_bSpawnImmediately;
 
-	[Attribute("0", UIWidgets.CheckBox, "If checked, respawn when died.")]
+	[Attribute("0", UIWidgets.CheckBox, "If checked, respawn when died.",category: "Spawn Manager")]
 	protected bool m_bRespawn;
 	
-	[Attribute("5", UIWidgets.Slider, "Negative spawn offset on the Z axis.", "5 1000 1")]
+	[Attribute("0", UIWidgets.CheckBox, "Stack all selection until player count.",category: "Spawn Manager")]
+	protected bool m_bShouldStack;
+	
+	[Attribute("5", UIWidgets.Slider, "Negative spawn offset on the Z axis.", "5 1000 1",category: "Spawn Manager")]
 	protected float m_fNegativeZOffset;
 
-	[Attribute("1", UIWidgets.ComboBox, "Which group to spawn with the dynamic Faction","", ParamEnumArray.FromEnum(AiGroupType))]
+	
+	[Attribute(category: "Spawn Manager", desc: "Define the spawns teams.")]
+	protected ref array<ref CountSpawnsByOnlinePlayerWithManager> m_rSpawns;
+
+	[Attribute("0", UIWidgets.ComboBox, "Override any select on this spawn with this team","", ParamEnumArray.FromEnum(AiGroupType),category: "Spawn Manager Team Override")]
 	protected AiGroupType m_eAiGroupType;	
 	
 	IEntity Owner;
 
-
+	NO_SCR_SpawnManager spawnManager;
+	
 	vector parentVector[4]
 	// Attached component.
 	protected RplComponent m_pRplComponent;
 
-	[Attribute()]
+	[Attribute(category: "Detaile Spawn (without spawn manager)", desc: "Only work when now spawn manager is available or m_rnIgnoreSpawnManagerAndUsePrefabs is set to true!")]
 	protected ref array<ref CountSpawnsByOnlinePlayer> m_rnDefaultPrefabs;
+	[Attribute("0", UIWidgets.CheckBox, category: "Detaile Spawn (without spawn manager)", desc: "Ignore the Task Manager")]
+	protected bool m_bIgnoreSpawnManagerAndUsePrefabs;
+	
+	
 	
 	//! Spawned agent relevant to the authority only.
 	protected ref array<AIAgent> m_pSpawnedAgents = new array<AIAgent>();
 	
-	//! Invoker which we can hook onto - see typedef above
-	protected ref ScriptInvoker_OnSpawnerEmpty m_pOnEmptyInvoker = new ScriptInvoker_OnSpawnerEmpty();
+	//! Not Implmented right now
+	protected ref ScriptInvoker_OnSpawnerEmpty m_pOnEmptyInvokerNightOpsAiSpawner = new ScriptInvoker_OnSpawnerEmpty();
 	
 	
 	array<AIAgent> GetSpawnedAgent()
@@ -47,7 +59,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker_OnSpawnerEmpty GetOnEmptyInvoker()
 	{
-		return m_pOnEmptyInvoker;
+		return m_pOnEmptyInvokerNightOpsAiSpawner;
 	}
 
 	
@@ -97,20 +109,16 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		playerManager.GetAllPlayers(players);
 		ref array<ResourceName> ressourceNamesToSpawn = new array<ResourceName>();
 		
-		bool UseDynamicFaction = false;
-		
 		FactionReferences factionToUse;
 		IEntity parent = Owner.GetParent();
 		if(parent)
 		{
 			NO_SCR_SpawnTrigger spawnTrigger = NO_SCR_SpawnTrigger.Cast(parent);
-			if(spawnTrigger)
+			if(spawnTrigger && spawnManager)
 			{
-				UseDynamicFaction = spawnTrigger.m_bShouldUseDynamicFaction;
-				NO_SCR_FactionGroupListComponent FactionGroupListComponent = NO_SCR_FactionGroupListComponent.Cast(world.FindEntityByName(spawnTrigger.m_bObjectNameWithFactionGroupListOnIt).FindComponent(NO_SCR_FactionGroupListComponent));
-				foreach(FactionReferences factionReference : FactionGroupListComponent.m_rFactionPrefabs)
+				foreach(FactionReferences factionReference : spawnManager.m_rFactionPrefabs)
 				{
-					if(factionReference.m_faction==FactionGroupListComponent.m_factionToSpawnWhenDynamicFaction)
+					if(factionReference.m_faction==spawnManager.m_factionToSpawnWhenDynamicFaction)
 					{
 						factionToUse = factionReference;
 					}
@@ -118,161 +126,216 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 			}
 		}
 		
-		CountSpawnsByOnlinePlayer toUse;
-		foreach (CountSpawnsByOnlinePlayer spawn : m_rnDefaultPrefabs)
-		{
-			if(spawn.CountOfPlayers<=players.Count())
-			{
-				toUse = spawn;
-			}
-		}
 		
-		//Todo only if not dynamicFactionSpawn
-		if(UseDynamicFaction)
-		{
-			//Todo if dynamicFactionSpawn
-			
-
-			if(m_eAiGroupType == AiGroupType.FireTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.FireTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.LightFireTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.LightFireTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.MachineGunTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.MachineGunTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.RifleSquad)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.RifleSquad);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.SentryTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.SentryTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.SniperTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.SniperOrManeuverTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.GLTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.GLTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.LATTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.LatOrAtTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.SuppressTeam)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.SuppressTeam);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam1)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam1);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam2)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam2);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam3)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam3);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam4)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam4);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam5)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam5);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam6)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam6);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam7)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam7);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam8)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam8);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam9)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam9);
-				}
-			}
-			else if(m_eAiGroupType == AiGroupType.CustomTeam10)
-			{
-				for(int i = 0; i < toUse.prefab.Count(); ++i)
-				{
-					ressourceNamesToSpawn.Insert(factionToUse.CustomTeam10);
-				}
-			}
-		}
-		else
+		if(!spawnManager)
 		{
 			
-			ressourceNamesToSpawn = toUse.prefab;
+			ref array<ResourceName> tmpRessourceNamesToSpawn = new array<ResourceName>();
+			CountSpawnsByOnlinePlayer toUse;
+			foreach (CountSpawnsByOnlinePlayer spawn : m_rnDefaultPrefabs)
+			{
+				if(spawn.CountOfPlayers<=players.Count())
+				{
+					if(m_bShouldStack)
+					{
+						tmpRessourceNamesToSpawn.InsertAll(spawn.prefab);
+					}
+					else{
+						toUse = spawn;
+					}
+					
+				}
+			}
+			if(!m_bShouldStack)
+				tmpRessourceNamesToSpawn = toUse.prefab;
+			
+			ressourceNamesToSpawn = tmpRessourceNamesToSpawn;
 		}
-		
+		else if(spawnManager && m_eAiGroupType != AiGroupType.PleaseSelect) // overwrite all teams
+		{
+			CountSpawnsByOnlinePlayerWithManager toUse;
+			foreach (CountSpawnsByOnlinePlayerWithManager spawn : m_rSpawns)
+			{
+				if(spawn!=null && spawn.CountOfPlayers<=players.Count())
+				{
+					if(!m_bShouldStack)
+					{
+						ressourceNamesToSpawn = new ref array<ResourceName>();
+					}
+					
+					foreach(AiGroupType tmpAiGroupType : spawn.prefab)
+						if(m_eAiGroupType == AiGroupType.FireTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.FireTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.LightFireTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.LightFireTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.MachineGunTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.MachineGunTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.RifleSquad)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.RifleSquad);
+						}
+						else if(m_eAiGroupType == AiGroupType.SentryTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.SentryTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.SniperTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.SniperOrManeuverTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.GLTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.GLTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.LATTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.LatOrAtTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.SuppressTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.SuppressTeam);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam1)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam1);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam2)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam2);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam3)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam3);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam4)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam4);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam5)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam5);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam6)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam6);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam7)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam7);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam8)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam8);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam9)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam9);
+						}
+						else if(m_eAiGroupType == AiGroupType.CustomTeam10)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam10);
+						}
+					
+				}
+			}
+		}
+		else if(spawnManager && m_eAiGroupType == AiGroupType.PleaseSelect)
+		{
+			CountSpawnsByOnlinePlayerWithManager toUse;
+			foreach (CountSpawnsByOnlinePlayerWithManager spawn : m_rSpawns)
+			{
+				if(spawn!=null && spawn.CountOfPlayers<=players.Count())
+				{
+					if(!m_bShouldStack)
+					{
+						ressourceNamesToSpawn = new ref array<ResourceName>();
+					}
+					
+					foreach(AiGroupType tmpAiGroupType : spawn.prefab)
+						if(tmpAiGroupType == AiGroupType.FireTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.FireTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.LightFireTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.LightFireTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.MachineGunTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.MachineGunTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.RifleSquad)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.RifleSquad);
+						}
+						else if(tmpAiGroupType == AiGroupType.SentryTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.SentryTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.SniperTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.SniperOrManeuverTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.GLTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.GLTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.LATTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.LatOrAtTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.SuppressTeam)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.SuppressTeam);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam1)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam1);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam2)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam2);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam3)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam3);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam4)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam4);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam5)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam5);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam6)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam6);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam7)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam7);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam8)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam8);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam9)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam9);
+						}
+						else if(tmpAiGroupType == AiGroupType.CustomTeam10)
+						{
+							ressourceNamesToSpawn.Insert(factionToUse.CustomTeam10);
+						}
+				}
+			}
+		}
 		
 		
 		bool first = true;	
@@ -290,11 +353,11 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 			vector newPos;
 			if(first)
 			{
-			 newPos = Vector(tmp[0], tmp[1], tmp[2]);
+			 	newPos = Vector(tmp[0], tmp[1], tmp[2]);
 			}
 			else
 			{
-			 newPos = Vector(tmp[0], tmp[1], tmp[2]+m_fNegativeZOffset);
+			 	newPos = Vector(tmp[0], tmp[1], tmp[2]+m_fNegativeZOffset);
 			}
 			vector pos;			
 			SCR_WorldTools.FindEmptyTerrainPosition(pos,newPos , 10,2,2,TraceFlags.VISIBILITY);
@@ -413,7 +476,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected event void OnEmpty()
 	{
-		m_pOnEmptyInvoker.Invoke();
+		m_pOnEmptyInvokerNightOpsAiSpawner.Invoke();
 		m_pSpawnedAgents = new array<AIAgent>();
 		DoSpawnDefault();
 		
@@ -469,6 +532,8 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DoSpawnDefault, 0);
 		}
 		
+		if(!m_bIgnoreSpawnManagerAndUsePrefabs)
+			spawnManager =  GetSpawnManager();
 		
 	}
 
@@ -503,6 +568,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 
 
 
+
 [BaseContainerProps(), BaseContainerCustomTitleField("CountOfPlayers")]
 class CountSpawnsByOnlinePlayer
 {
@@ -512,3 +578,15 @@ class CountSpawnsByOnlinePlayer
 	[Attribute("", UIWidgets.Auto, "Group prefabs to spawn.")]
 	ref array<ResourceName> prefab;
 }
+
+
+[BaseContainerProps(), BaseContainerCustomTitleField("CountOfPlayers")]
+class CountSpawnsByOnlinePlayerWithManager
+{
+	[Attribute("", UIWidgets.Slider, "How many player are joined?", "1 100 1")]
+	int CountOfPlayers;
+	
+	[Attribute("0",UIWidgets.ComboBox, "Which group to spawn","", ParamEnumArray.FromEnum(AiGroupType),category: "Spawn Manager")]
+	ref array<AiGroupType> prefab;
+}
+
