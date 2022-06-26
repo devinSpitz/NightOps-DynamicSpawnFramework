@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{91273FA17102C8EE}Prefabs/NO_DSF/Waypoints/TriggerAiPatrol.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

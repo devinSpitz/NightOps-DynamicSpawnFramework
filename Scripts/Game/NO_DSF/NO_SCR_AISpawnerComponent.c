@@ -9,23 +9,22 @@ typedef ScriptInvokerBase<ScriptInvoker_OnSpawnerEmptyDelegate> ScriptInvoker_On
 
 //------------------------------------------------------------------------------------------------
 class NO_SCR_AISpawnerComponent : ScriptComponent
-{
+{	
+	
 	[Attribute("0", UIWidgets.CheckBox, "If checked, spawns group immediately FYI: if you change the faction on the spawn manager while inGame the already spawned AI's will not respawn as new faction.",category: "Spawn Manager")]
 	protected bool m_bSpawnImmediately;
-
+	
 	[Attribute("0", UIWidgets.CheckBox, "If checked, respawn when died.",category: "Spawn Manager")]
 	protected bool m_bRespawn;
-	
 	[Attribute("0", UIWidgets.CheckBox, "Stack all selection until player count.",category: "Spawn Manager")]
 	protected bool m_bShouldStack;
 	
-	[Attribute("5", UIWidgets.Slider, "Negative spawn offset on the Z axis.", "5 1000 1",category: "Spawn Manager")]
+	[Attribute("5", UIWidgets.Slider, "Negative spawn offset on the Z axis so that mutliple Ais do not spawn in each other.", "5 1000 1",category: "Spawn Manager")]
 	protected float m_fNegativeZOffset;
 
-	
 	[Attribute(category: "Spawn Manager", desc: "Define the spawns teams.")]
 	protected ref array<ref CountSpawnsByOnlinePlayerWithManager> m_rSpawns;
-
+	
 	[Attribute("0", UIWidgets.ComboBox, "Override any select on this spawn with this team","", ParamEnumArray.FromEnum(AiGroupType),category: "Spawn Manager Team Override")]
 	protected AiGroupType m_eAiGroupType;	
 	
@@ -34,12 +33,13 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	NO_SCR_SpawnManager spawnManager;
 	
 	vector parentVector[4]
-	// Attached component.
-	protected RplComponent m_pRplComponent;
 
+	protected RplComponent m_pRplComponent;
+	
 	[Attribute(category: "Detaile Spawn (without spawn manager)", desc: "Only work when now spawn manager is available or m_rnIgnoreSpawnManagerAndUsePrefabs is set to true!")]
 	protected ref array<ref CountSpawnsByOnlinePlayer> m_rnDefaultPrefabs;
-	[Attribute("0", UIWidgets.CheckBox, category: "Detaile Spawn (without spawn manager)", desc: "Ignore the Task Manager")]
+	
+	[Attribute("0", UIWidgets.CheckBox, category: "Detaile Spawn (without spawn manager)", desc: "Ignore the Spawn Manager")]
 	protected bool m_bIgnoreSpawnManagerAndUsePrefabs;
 	
 	
@@ -47,10 +47,10 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	//! Spawned agent relevant to the authority only.
 	protected ref array<AIAgent> m_pSpawnedAgents = new array<AIAgent>();
 	
-	//! Not Implmented right now
+	//! only triggeres when respawn is enabled
 	protected ref ScriptInvoker_OnSpawnerEmpty m_pOnEmptyInvokerNightOpsAiSpawner = new ScriptInvoker_OnSpawnerEmpty();
 	
-	
+	//! get the spawned agent
 	array<AIAgent> GetSpawnedAgent()
 	{
 		return m_pSpawnedAgents;
@@ -63,6 +63,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	}
 
 	
+	//! Will delete the spawned prefab
 	void RemoveSpawned()
 	{
 		if(m_pSpawnedAgents.Count() > 0)
@@ -76,7 +77,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		}
 	}
 	
-	//------------------------------------------------------------------------------------------------
+	//! Will directly spawned the prefab depending the settings
 	bool DoSpawn()
 	{
 		if (IsSpawned())
@@ -385,76 +386,8 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 			m_pSpawnedAgents.Insert(agent);
 				
 				
-			ref array<IEntity> children = new array<IEntity>();
-			NO_SCR_DfsStatics.GetAllChildren(Owner,children);
-		
-				
-				
-			if(!children || children.Count()<=0) 
-			{
-				return false;
-			}
-				
-				
-			AIWaypointCycle cycle;
-			ref array<AIWaypoint> patrolWaypoints = new array<AIWaypoint>();
-			SCR_DefendWaypoint defend;
-			SCR_BoardingWaypoint onBoard;
-			foreach (IEntity waypointEntity : children)
-			{
-				auto tmpWaypoint = SCR_AIWaypoint.Cast(waypointEntity);
-				auto tmpCycle = AIWaypointCycle.Cast(waypointEntity);
 			
-				if(!defend)
-				{
-					defend = SCR_DefendWaypoint.Cast(waypointEntity);
-					if(defend)
-						continue;
-				}
-				if(!onBoard)
-				{
-					onBoard = SCR_BoardingWaypoint.Cast(waypointEntity);
-					if(onBoard)
-						continue;
-				}
-		
-					
-				if(tmpWaypoint &&  !tmpCycle) 
-				{
-					patrolWaypoints.Insert(tmpWaypoint);
-				}
-				if(tmpCycle) 
-				{
-					cycle = tmpCycle;
-				}
-			}
-				
-			if(cycle)
-			{
-				cycle.SetWaypoints(patrolWaypoints);	
-					
-			 	agent.AddWaypoint(cycle);
-			}
-			else
-			{
-				if(patrolWaypoints && patrolWaypoints.Count()>0)
-				{
-					foreach (AIWaypoint patrol : patrolWaypoints)
-					{
-						agent.AddWaypoint(patrol);
-					}
-				}
-				if(defend)
-				{
-					agent.AddWaypoint(defend);
-				}
-				if(onBoard)
-				{
-					agent.AddWaypoint(onBoard);
-				}
-			}
-				
-					
+			NO_SCR_DfsStatics.AddWaypointsToAi(agent, Owner);
 				
 				
 			//respawn
@@ -473,7 +406,10 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		return true;
 	}
 	
-	//------------------------------------------------------------------------------------------------
+	
+	
+	
+	//! Will get triggered when respawn is active and the Ai has died
 	protected event void OnEmpty()
 	{
 		m_pOnEmptyInvokerNightOpsAiSpawner.Invoke();
@@ -482,13 +418,13 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//! return if the AI already has spawned
 	bool IsSpawned()
 	{
 		return m_pSpawnedAgents.Count()>0;
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//! Actives the spawn and gives back if it realy did happen
 	bool DoSpawnDefault()
 	{
 		return DoSpawn();
@@ -508,7 +444,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 	}
 	
 
-	//------------------------------------------------------------------------------------------------
+	//! Init function
 	override void OnPostInit(IEntity owner)
 	{
 		Owner = owner;
@@ -519,7 +455,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		SetEventMask(owner, EntityEvent.INIT);
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//! Init function
 	override void EOnInit(IEntity owner)
 	{
 
@@ -570,22 +506,27 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 
 
 [BaseContainerProps(), BaseContainerCustomTitleField("CountOfPlayers")]
+//! Count spawns by online player
 class CountSpawnsByOnlinePlayer
 {
+	//! How many player are joined?
 	[Attribute("", UIWidgets.Slider, "How many player are joined?", "1 100 1")]
 	int CountOfPlayers;
 	
+	//! Group prefabs to spawn.
 	[Attribute("", UIWidgets.Auto, "Group prefabs to spawn.")]
 	ref array<ResourceName> prefab;
 }
 
-
 [BaseContainerProps(), BaseContainerCustomTitleField("CountOfPlayers")]
+//! Count spawns by online player with manager
 class CountSpawnsByOnlinePlayerWithManager
 {
+	//! How many player are joined?
 	[Attribute("", UIWidgets.Slider, "How many player are joined?", "1 100 1")]
 	int CountOfPlayers;
 	
+	//! Which group to spawn
 	[Attribute("0",UIWidgets.ComboBox, "Which group to spawn","", ParamEnumArray.FromEnum(AiGroupType),category: "Spawn Manager")]
 	ref array<AiGroupType> prefab;
 }

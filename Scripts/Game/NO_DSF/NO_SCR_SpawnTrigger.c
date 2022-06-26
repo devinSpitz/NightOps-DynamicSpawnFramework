@@ -76,14 +76,8 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
         if (!cc) return false; // If the entity is not a person, filter it out
         if (cc.GetFactionKey() != m_faction) return false; // If the entity does not have the Faction key of USSR, filter it out
         if (!IsAlive(cc)) return false; // If the entity is dead, filter it out
-		if(m_bShouldTriggerOnlyOnPlayerContact && !IsPlayer(ent) ) return false;
+		if(m_bShouldTriggerOnlyOnPlayerContact && !NO_SCR_DfsStatics.IsPlayer(ent,GameSingleEntity) ) return false;
         return true; // Otherwise, include it!
-    }
- 
-	bool IsPlayer(IEntity ent) 
-    {
-      int playerId = GameSingleEntity.GetPlayerManager().GetPlayerIdFromControlledEntity(ent); 
-      return playerId > 0;
     }
 	
     override void OnActivate(IEntity ent)

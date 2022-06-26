@@ -17,7 +17,7 @@ class NO_SCR_SpawnManager : GenericEntity
 	[Attribute()]
 	ref array<ref FactionReferences> m_rFactionPrefabs;
 	
-	[Attribute("USSR", UIWidgets.EditBox, "Faction to be spawned. Only needed when m_bShouldUseDynamicFaction is set on the trigger!")]
+	[Attribute("USSR", UIWidgets.EditBox, "Faction to be spawned")]
 	FactionKey m_factionToSpawnWhenDynamicFaction;	
 	
 	void NO_SCR_SpawnManager(IEntitySource src, IEntity parent)

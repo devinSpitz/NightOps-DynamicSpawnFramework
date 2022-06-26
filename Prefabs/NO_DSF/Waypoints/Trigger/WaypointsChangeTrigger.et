@@ -1,0 +1,14 @@
+NO_SCR_WaypointTrigger {
+ ID "59B4909421424827"
+ components {
+  Hierarchy "{59B4909404480CA5}" {
+  }
+  RplComponent "{59B49094068AAC08}" {
+  }
+ }
+ coords 397.56 10.001 86.286
+ TriggerShapeType Sphere
+ SphereRadius 150
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+}
