@@ -38,6 +38,82 @@ class NO_SCR_DfsStatics
 		return null;
 	}
 	
+	static bool IsPlayer(IEntity ent,ArmaReforgerScripted GameSingleEntity) 
+    {
+      int playerId = GameSingleEntity.GetPlayerManager().GetPlayerIdFromControlledEntity(ent); 
+      return playerId > 0;
+    }
+	
+	static void AddWaypointsToAi(AIAgent agent, IEntity Owner)
+	{
+		ref array<IEntity> children = new array<IEntity>();
+		NO_SCR_DfsStatics.GetAllChildren(Owner,children);
+		if(!children || children.Count()<=0) 
+		{
+			return;
+		}
+			
+			
+		AIWaypointCycle cycle;
+		ref array<AIWaypoint> patrolWaypoints = new array<AIWaypoint>();
+		SCR_DefendWaypoint defend;
+		SCR_BoardingWaypoint onBoard;
+		foreach (IEntity waypointEntity : children)
+		{
+			auto tmpWaypoint = SCR_AIWaypoint.Cast(waypointEntity);
+			auto tmpCycle = AIWaypointCycle.Cast(waypointEntity);
+		
+			if(!defend)
+			{
+				defend = SCR_DefendWaypoint.Cast(waypointEntity);
+				if(defend)
+					continue;
+			}
+			if(!onBoard)
+			{
+				onBoard = SCR_BoardingWaypoint.Cast(waypointEntity);
+				if(onBoard)
+					continue;
+			}
+	
+				
+			if(tmpWaypoint &&  !tmpCycle) 
+			{
+				patrolWaypoints.Insert(tmpWaypoint);
+			}
+			if(tmpCycle) 
+			{
+				cycle = tmpCycle;
+			}
+		}
+			
+		if(cycle)
+		{
+			cycle.SetWaypoints(patrolWaypoints);	
+				
+		 	agent.AddWaypoint(cycle);
+		}
+		else
+		{
+			if(patrolWaypoints && patrolWaypoints.Count()>0)
+			{
+				foreach (AIWaypoint patrol : patrolWaypoints)
+				{
+					agent.AddWaypoint(patrol);
+				}
+			}
+			if(defend)
+			{
+				agent.AddWaypoint(defend);
+			}
+			if(onBoard)
+			{
+				agent.AddWaypoint(onBoard);
+			}
+		}
+				
+	}
+	
 	
 }
 

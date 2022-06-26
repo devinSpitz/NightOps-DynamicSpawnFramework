@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{D1B93D646B2B9152}Prefabs/NO_DSF/Waypoints/TriggerAiGoToGetInNearest.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

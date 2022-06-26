@@ -56,8 +56,7 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
      NO_SCR_AISpawnerComponent "{59889B97C35F8467}" {
       m_rSpawns {
        CountSpawnsByOnlinePlayerWithManager "{599EF0F4E403E074}" {
-        prefab + {
-         0 0
+        prefab +{
         }
        }
       }
@@ -78,6 +77,20 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
    }
    GenericEntity SpawnAiGoToDefend : "{CD5A05CDEB0894EE}Prefabs/NO_DSF/Groups/DynamicFaction/SpawnAiGoToDefend.et" {
     coords 92.223 2.841 -67.85
+    {
+     NO_SCR_WaypointTrigger : "{70FEEC769CD64D36}Prefabs/NO_DSF/Waypoints/TriggerGoToDefend.et" {
+      coords 78.426 0 70.411
+      angleY 108.628
+      DrawShape 1
+      {
+       NO_SCR_WaypointTrigger : "{70FEEC769CD64D36}Prefabs/NO_DSF/Waypoints/TriggerGoToDefend.et" {
+        coords 67.776 0 59.78
+        angleY 119.729
+        DrawShape 1
+       }
+      }
+     }
+    }
    }
   }
  }

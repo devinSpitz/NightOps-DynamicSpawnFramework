@@ -1,0 +1,40 @@
+NO_SCR_WaypointTrigger {
+ ID "59B4909541D47DC6"
+ components {
+  Hierarchy "{59B4909404480CA5}" {
+  }
+  RplComponent "{59B49094068AAC08}" {
+  }
+ }
+ coords 75.95 10.001 51.645
+ TriggerShapeType Sphere
+ SphereRadius 32
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ {
+  $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+   {
+    ID "59B4909541D47DB8"
+    components {
+     Hierarchy "{59889B935ED9C5AE}" {
+     }
+     RplComponent "{59889B939C4F5922}" {
+     }
+    }
+    coords -38.924 -0.002 31.955
+    angleY -46.899
+   }
+   {
+    ID "59B4909541D47DBB"
+    components {
+     Hierarchy "{59889B935C8A5D3F}" {
+     }
+     RplComponent "{59889B939E60F5DA}" {
+     }
+    }
+    coords 0.145 -0.002 -0.077
+    angleY -46.899
+   }
+  }
+ }
+}
