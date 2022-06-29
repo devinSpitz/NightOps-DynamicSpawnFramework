@@ -1,0 +1,10 @@
+GenericEntity : "{FCE3FA547AA13ECC}Prefabs/Structures/Military/Flags/FlagPole_02_V2.et" {
+ ID "50C6D20663830070"
+ components {
+  RigidBody "{5472A771D2979EF1}" {
+   ResponseIndex "TinyDestructible"
+  }
+  RplComponent "{59BB32865973CE3D}" {
+  }
+ }
+}

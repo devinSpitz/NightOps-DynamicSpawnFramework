@@ -89,4 +89,29 @@ class FactionReferences
 	ResourceName CustomTeam9;
 	[Attribute("", UIWidgets.Auto, "Group prefab to spawn.")]
 	ResourceName CustomTeam10;
+	
+	
+	
+	
+
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment1;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment2;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment3;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment4;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment5;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment6;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment7;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName 	CustomEnvironment8;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment9;
+	[Attribute("", UIWidgets.Auto, "Environment prefab to spawn.")]
+	ResourceName CustomEnvironment10;
 }
