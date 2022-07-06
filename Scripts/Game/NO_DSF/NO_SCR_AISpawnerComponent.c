@@ -103,6 +103,7 @@ class NO_SCR_AISpawnerComponent : ScriptComponent
 		auto playerManager = game.GetPlayerManager();
 		if(!playerManager) return false;
 		
+
 		BaseWorld world = Owner.GetWorld();
 		if(!world) return false;
 		

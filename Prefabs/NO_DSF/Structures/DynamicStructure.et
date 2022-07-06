@@ -1,0 +1,20 @@
+GenericEntity {
+ ID "59BB24E776D2C193"
+ components {
+  Hierarchy "{59BB24E7469F9976}" {
+  }
+  NO_SCR_EnvSpawnerComponent "{59BB24E7469F9AA5}" {
+   m_rDynamicSpawns {
+    CountSpawnsByOnlinePlayerWithManagerEnv "{59BB24E74B4BFCDA}" {
+     prefab {
+      1
+     }
+    }
+   }
+   m_bEnableDynamicEnv 1
+  }
+  RplComponent "{59BB24E7469F9ABC}" {
+  }
+ }
+ coords -135.871 -0 -61.338
+}

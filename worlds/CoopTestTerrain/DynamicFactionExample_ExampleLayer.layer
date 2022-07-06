@@ -8,6 +8,9 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
   m_bDelete 0
   updateNavmesh 1
   {
+   GenericEntity : "{AB830F7E242D850B}Prefabs/NO_DSF/Structures/DynamicStructure.et" {
+    coords -141.355 -0 -60.893
+   }
    $grp GenericEntity : "{D8F00B5CFC8514F1}Prefabs/NO_DSF/Vehicles/SpawnVehicle.et" {
     {
      coords 64.83 0 -120.045
@@ -29,6 +32,15 @@ $grp NO_SCR_SpawnTrigger : "{8E854CB7405795E8}Prefabs/NO_DSF/BaseSpawnTrigger.et
     }
     {
      coords 25.202 0 168.713
+    }
+    {
+     components {
+      NO_SCR_EnvSpawnerComponent "{59889B90E04F5D80}" {
+       m_bRespawn 1
+       m_bRespawnCheckTime 10
+      }
+     }
+     coords -113.196 0 -85.674
     }
    }
    GenericEntity : "{F7A42562EE8E24E6}Prefabs/NO_DSF/Structures/SpawnStructure.et" {

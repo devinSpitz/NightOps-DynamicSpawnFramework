@@ -61,5 +61,15 @@ SCR_MPDestructionManager DestructionManager : "{9BB369F2803C6F71}Prefabs/MP/MPDe
 }
 NO_SCR_SpawnManager : "{BC4EF3F0E9688AE2}Prefabs/NO_DSF/MP/Managers/SpawnManager.et" {
  coords 227.561 10.001 159.239
- m_factionToSpawnWhenDynamicFaction "US"
+ m_rFactionPrefabs {
+  FactionReferences "{599EF0F321AB8FBB}" {
+   CustomEnvironment1 "{651E545B53BBD035}Prefabs/Structures/Military/Flags/FlagPole_02_V1_USSR.et"
+  }
+  FactionReferences "{599EF0F322A1645A}" {
+   CustomEnvironment1 "{A4D90CAA4F220CBF}Prefabs/Structures/Military/Flags/FlagPole_02_V2_FIA.et"
+  }
+  FactionReferences "{599EF0F322CC7AD7}" {
+   CustomEnvironment1 "{EFFA90623A05EB26}Prefabs/Structures/Military/Flags/FlagPole_02_V2_US.et"
+  }
+ }
 }

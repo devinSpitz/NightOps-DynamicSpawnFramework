@@ -115,8 +115,31 @@ class NO_SCR_DfsStatics
 	}
 	
 	
+	static bool IsAlive(IEntity entity)
+	{
+		DamageManagerComponent damageManager = DamageManagerComponent.Cast(entity.FindComponent(DamageManagerComponent));
+		if (damageManager)
+			return damageManager.GetState() != EDamageState.DESTROYED;
+		else
+			return true;
+	}
+	
+	
 }
-
+enum EnvType
+{
+	PleaseSelect = 0,
+	CustomEnvironment1 = 1,
+	CustomEnvironment2 = 2,
+	CustomEnvironment3 = 3,
+	CustomEnvironment4 = 4,
+	CustomEnvironment5 = 6,
+	CustomEnvironment6 = 7,
+	CustomEnvironment7 = 8,
+	CustomEnvironment8 = 9,
+	CustomEnvironment9 = 10,
+	CustomEnvironment10 = 11,
+};
 
 enum AiGroupType
 {

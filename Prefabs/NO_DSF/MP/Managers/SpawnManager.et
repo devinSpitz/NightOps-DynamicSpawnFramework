@@ -12,6 +12,7 @@ NO_SCR_SpawnManager {
    GLTeam "{43C7A28EEB660FF8}Prefabs/Groups/OPFOR/Group_USSR_Team_GL.et"
    LatOrAtTeam "{96BAB56E6558788E}Prefabs/Groups/OPFOR/Group_USSR_Team_AT.et"
    SuppressTeam "{1C0502B5729E7231}Prefabs/Groups/OPFOR/Group_USSR_Team_Suppress.et"
+   CustomEnvironment1 "{651E545B53BBD034}Prefabs/Structures/Military/Flags/FlagPole_02_V1_USSR.et"
   }
   FactionReferences "{599EF0F322A1645A}" {
    m_faction "FIA"
@@ -24,6 +25,7 @@ NO_SCR_SpawnManager {
    GLTeam "{2E9C920C3ACA2C6F}Prefabs/Groups/INDFOR/Group_FIA_ReconTeam.et"
    LatOrAtTeam "{2CC26054775FBA2C}Prefabs/Groups/INDFOR/Group_FIA_Team_AT.et"
    SuppressTeam "{CE41AF625D05D0F0}Prefabs/Groups/INDFOR/Group_FIA_RifleSquad.et"
+   CustomEnvironment1 "{A4D90CAA4F220CBE}Prefabs/Structures/Military/Flags/FlagPole_02_V2_FIA.et"
   }
   FactionReferences "{599EF0F322CC7AD7}" {
    m_faction "US"
@@ -36,7 +38,8 @@ NO_SCR_SpawnManager {
    GLTeam "{DE747BC9217D383C}Prefabs/Groups/BLUFOR/Group_US_Team_GL.et"
    LatOrAtTeam "{FAEA8B9E1252F56E}Prefabs/Groups/BLUFOR/Group_US_Team_LAT.et"
    SuppressTeam "{81B6DBF2B88545F5}Prefabs/Groups/BLUFOR/Group_US_Team_Suppress.et"
+   CustomEnvironment1 "{EFFA90623A05EB25}Prefabs/Structures/Military/Flags/FlagPole_02_V2_US.et"
   }
  }
- m_factionToSpawnWhenDynamicFaction "FIA"
+ m_factionToSpawnWhenDynamicFaction "US"
 }

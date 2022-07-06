@@ -11,9 +11,20 @@ typedef ScriptInvokerBase<ScriptInvoker_OnSpawnerEmptyDelegateEnv> ScriptInvoker
 //------------------------------------------------------------------------------------------------
 class NO_SCR_EnvSpawnerComponent : ScriptComponent
 {
+	
+	
+	
 	[Attribute()]
 	protected ref array<ref CountSpawnsByOnlinePlayer> m_rnDefaultPrefabs;
 	
+	[Attribute("0", UIWidgets.CheckBox, "If checked, respawn when gone or died. Does not work always")]
+	protected bool m_bRespawn;	
+	
+	[Attribute("1", UIWidgets.Slider, "Only if respawn is enabled: How much time should be waitet between the check if the env is gone?", "1 100 1")]
+	protected int m_bRespawnCheckTime;
+	
+	protected bool m_bRespawnFunctionAlreadyStarted = false;
+	protected bool m_bIsAlive = false;
 	
 	[Attribute("0", UIWidgets.CheckBox, "If checked, spawns immediately.")]
 	protected bool m_bSpawnImmediately;
@@ -25,11 +36,21 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 	
 	[Attribute("0", UIWidgets.Slider, "Radius in which should get searched for free place. Needed when there are multiple prefabs in there.", "10 1000 10")]
 	protected float m_fFreeSpaceRadios;
+	
+	[Attribute(desc: "Define the spawns.",category: "Enable Dynamic Environment")]
+	protected ref array<ref CountSpawnsByOnlinePlayerWithManagerEnv> m_rDynamicSpawns;
+	
+	[Attribute("0", UIWidgets.CheckBox, category: "Enable Dynamic Environment", desc: "Enable dynamic env")]
+	protected bool m_bEnableDynamicEnv;
+	
+	IEntity Owner;
+	
 
 	vector parentVector[4]
 	// Attached component.
 	protected RplComponent m_pRplComponent;
 	
+	NO_SCR_SpawnManager spawnManager;
 
 	//! Spawned enviroment relevant to the authority only.
 	protected ref array<IEntity> m_pSpawnedEnvs = new array<IEntity>();
@@ -99,15 +120,89 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 		playerManager.GetAllPlayers(players);
 		CountSpawnsByOnlinePlayer toUse;
 		
-		foreach (CountSpawnsByOnlinePlayer spawn : m_rnDefaultPrefabs)
+		ref array<ResourceName> prefabs;
+		
+		if(!m_bEnableDynamicEnv)
 		{
-			if(spawn.CountOfPlayers<=players.Count())
+			
+			foreach (CountSpawnsByOnlinePlayer spawn : m_rnDefaultPrefabs)
 			{
-				toUse = spawn;
+				if(spawn.CountOfPlayers<=players.Count())
+				{
+					prefabs = spawn.prefab;
+				}
 			}
+			
+		}else{
+			prefabs = new array<ResourceName>();
+			FactionReferences factionToUse;
+			IEntity parent = Owner.GetParent();
+			if(parent)
+			{
+				NO_SCR_SpawnTrigger spawnTrigger = NO_SCR_SpawnTrigger.Cast(parent);
+				if(spawnTrigger && spawnManager)
+				{
+					foreach(FactionReferences factionReference : spawnManager.m_rFactionPrefabs)
+					{
+						if(factionReference.m_faction==spawnManager.m_factionToSpawnWhenDynamicFaction)
+						{
+							factionToUse = factionReference;
+						}
+					}
+				}
+			}
+				
+			foreach (CountSpawnsByOnlinePlayerWithManagerEnv spawn : m_rDynamicSpawns)
+			{
+				foreach(EnvType tmpEnvType : spawn.prefab)
+					if(tmpEnvType == EnvType.CustomEnvironment1)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment1);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment2)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment2);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment3)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment3);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment4)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment4);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment5)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment5);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment6)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment6);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment7)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment7);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment8)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment8);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment9)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment9);
+					}
+					else if(tmpEnvType == EnvType.CustomEnvironment10)
+					{
+						prefabs.Insert(factionToUse.CustomEnvironment10);
+					}
+			}
+			
 		}
 		
-		foreach (ResourceName ressourceName : toUse.prefab)
+		
+		
+		
+		foreach (ResourceName ressourceName : prefabs)
 		{
 			Resource enviromentPrefab = Resource.Load(ressourceName);
 			if (!enviromentPrefab)
@@ -139,14 +234,53 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 				RplComponent.DeleteRplEntity(spawnedEntity, false);
 				return false;
 			}
-	
+			
+
 			// Store enviroment			
 			m_pSpawnedEnvs.Insert(enviroment);
 
 		}
+		
+		if(m_bRespawn && !m_bRespawnFunctionAlreadyStarted)
+		{
+			GetGame().GetCallqueue().CallLater(checkIfRepsawnIsNeeded,m_bRespawnCheckTime*1000, true);				
+		}
+	
+		m_bIsAlive = true;
 		return true;
 	}
 
+	void checkIfRepsawnIsNeeded()
+	{
+		if(!m_bIsAlive) return;
+		m_bRespawnFunctionAlreadyStarted = true;
+		if(m_pSpawnedEnvs.Count()>0)
+		{
+			
+			foreach(IEntity entity : m_pSpawnedEnvs)
+			{
+				if(entity != null)
+				{
+					auto DamageManager = DamageManagerComponent.Cast(entity.FindComponent(DamageManagerComponent));
+					if(DamageManager && !NO_SCR_DfsStatics.IsAlive(entity))
+					{
+						continue;
+					}
+					//means one entity is either alive or not null so no repsawn needed
+					return;
+				}
+				
+			}
+		}
+		
+		m_pSpawnedEnvs = new array<IEntity>();
+		m_bIsAlive = false;
+		
+		DoSpawnDefault();
+	}
+	
+
+	
 	//------------------------------------------------------------------------------------------------
 	bool IsSpawned()
 	{
@@ -202,6 +336,7 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
+		Owner = owner;
 		m_pRplComponent = RplComponent.Cast(owner.FindComponent(RplComponent));
 		if (!VerifyRplComponentPresent())
 			return;
@@ -220,6 +355,10 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 			// we delay the call to happen asap (after EOnInit)
 			GetGame().GetCallqueue().CallLater(DoSpawnDefault, 0);
 		}
+		
+		
+		if(m_bEnableDynamicEnv)
+			spawnManager =  GetSpawnManager();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -232,4 +371,17 @@ class NO_SCR_EnvSpawnerComponent : ScriptComponent
 	{
 	}
 
+}
+
+[BaseContainerProps(), BaseContainerCustomTitleField("CountOfPlayers")]
+//! Count spawns by online player with manager
+class CountSpawnsByOnlinePlayerWithManagerEnv
+{
+	//! How many player are joined?
+	[Attribute("", UIWidgets.Slider, "How many player are joined?", "1 100 1")]
+	int CountOfPlayers;
+	
+	//! Which group to spawn
+	[Attribute("0",UIWidgets.ComboBox, "Which group to spawn","", ParamEnumArray.FromEnum(EnvType),category: "Spawn Manager")]
+	ref array<EnvType> prefab;
 }
