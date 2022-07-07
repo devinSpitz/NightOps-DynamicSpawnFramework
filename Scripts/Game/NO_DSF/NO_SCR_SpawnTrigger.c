@@ -15,8 +15,14 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 	protected bool m_bRandomizedSpawns;	
 	
 	[Attribute("0", UIWidgets.Slider, "How many percentige of the AI spawns should be populated (only when RandomizedSpawns are enabled)", "0 100 1",category: "Spawn Trigger")]
-	protected int PercentageAi;
+	int PercentageAi;
 
+	[Attribute("0", UIWidgets.CheckBox, "Enables the dynamic percentage of ai groups to spawn by count of online players!",category: "Dynamic Spwan Percentage by Player Count",)]
+	protected bool m_bEnableDynamicPercentageSpawnsByPlayerCount;	
+	
+	[Attribute(category: "Dynamic Spwan Percentage by Player Count", desc: "How many Ai Spawns should be activated by player count")]
+	protected ref array<ref PercentageAiByOnlinePlayer> m_percentageAiByPlayerCountArray;
+	
 	[Attribute("USSR", UIWidgets.EditBox, "Faction which should Trigger",category: "Spawn Trigger")]
 	FactionKey m_faction;
 
@@ -135,6 +141,23 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 		
 		array<NO_SCR_AISpawnerComponent> aisToSpawn = new array<NO_SCR_AISpawnerComponent>();
 		aisToSpawn.Copy(childrenAiSpawner);
+		
+		if(m_bEnableDynamicPercentageSpawnsByPlayerCount)
+		{
+			array<int> players = {};
+			GetGame().GetPlayerManager().GetAllPlayers(players);
+			
+			foreach (PercentageAiByOnlinePlayer spawn : m_percentageAiByPlayerCountArray)
+			{
+				if(spawn.CountOfPlayers<=players.Count())
+				{
+						PercentageAi = spawn.PercentageAi;
+				}
+			}
+			m_bRandomizedSpawns = true;
+		}
+		
+		
 		if(m_bRandomizedSpawns && PercentageAi<100)
 		{
 			
@@ -193,3 +216,17 @@ class NO_SCR_SpawnTrigger : SCR_BaseTriggerEntity
 	
  
 }
+
+[BaseContainerProps(), BaseContainerCustomTitleField("CountOfPlayers")]
+//! Count spawns by online player
+class PercentageAiByOnlinePlayer
+{
+	//! How many player are joined?
+	[Attribute("", UIWidgets.Slider, "How many player are joined?", "1 100 1")]
+	int CountOfPlayers;
+	
+	
+	[Attribute("0", UIWidgets.Slider, "How many percentige of the AI spawns should be populated (only when RandomizedSpawns are enabled)", "0 100 1",category: "Spawn Trigger")]
+	int PercentageAi;
+}
+
